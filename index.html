@@ -1,0 +1,1718 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cabanes !</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.2.0/tabler-icons.min.css">
+<style>
+/* =========================================================
+   DESIGN TOKENS — Cabanes !
+   ========================================================= */
+:root {
+  --bark:    #2b211b;
+  --forest:  #356b44;
+  --amber:   #b04a18;
+  --linen:   #f5ede0;
+  --linen2:  #ede3d1;
+  --muted:   #5c6352;
+  --white:   #ffffff;
+
+  --text-primary:   #2b211b;
+  --text-secondary: #5c6352;
+  --text-tertiary:  #9a8e84;
+
+  --border:  rgba(43,33,27,0.1);
+
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  18px;
+  --r-xl:  24px;
+  --r-pill: 999px;
+
+  --font-head: 'Nunito', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* RGA: minimum touch target */
+  --touch: 44px;
+}
+
+/* =========================================================
+   RESET + BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #d6cec4; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+button:focus-visible,
+a:focus-visible { outline: 3px solid var(--forest); outline-offset: 2px; }
+
+/* =========================================================
+   FRAME
+   ========================================================= */
+.frame {
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  background: var(--linen);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* =========================================================
+   SCREENS
+   ========================================================= */
+[data-screen] { display: none; flex: 1; flex-direction: column; overflow-y: auto; }
+[data-screen].active { display: flex; }
+
+/* =========================================================
+   BOTTOM NAV
+   ========================================================= */
+.nav {
+  display: flex;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 6px 0 max(10px, env(safe-area-inset-bottom));
+  flex-shrink: 0;
+  z-index: 10;
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  min-height: var(--touch);
+  transition: color 0.15s;
+}
+.nav-item.active { color: var(--forest); }
+.nav-item i { font-size: 22px; }
+
+/* =========================================================
+   TYPOGRAPHY HELPERS
+   ========================================================= */
+.h1 { font-family: var(--font-head); font-size: 26px; font-weight: 800; color: var(--text-primary); line-height: 1.2; }
+.h2 { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+.h3 { font-size: 17px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+.body { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
+.caption { font-size: 13px; color: var(--text-tertiary); line-height: 1.4; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-tertiary); }
+
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+.pad { padding: 16px 20px; }
+.pad-top { padding-top: 16px; }
+.stack { display: flex; flex-direction: column; }
+.stack-sm { gap: 8px; }
+.stack-md { gap: 12px; }
+.stack-lg { gap: 20px; }
+.row { display: flex; align-items: center; }
+.row-between { display: flex; align-items: center; justify-content: space-between; }
+.section-header { padding: 20px 20px 8px; }
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+.card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.card-pad { padding: 16px; }
+.card-raised {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(43,33,27,0.08);
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--touch);
+  padding: 0 20px;
+  border-radius: var(--r-md);
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--forest); color: var(--white); }
+.btn-secondary { background: var(--linen2); color: var(--forest); }
+.btn-amber { background: var(--amber); color: var(--white); }
+.btn-ghost { background: none; border: 1.5px solid var(--border); color: var(--text-primary); }
+.btn-full { width: 100%; }
+.btn-dashed { background: none; border: 1.5px dashed rgba(53,107,68,0.35); color: var(--forest); border-radius: var(--r-md); }
+
+/* =========================================================
+   TAGS / BADGES
+   ========================================================= */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+}
+.tag-green { background: rgba(53,107,68,0.12); color: var(--forest); }
+.tag-amber { background: rgba(176,74,24,0.1);  color: var(--amber); }
+.tag-gray  { background: rgba(43,33,27,0.07);  color: var(--text-secondary); }
+.tag-active { background: rgba(53,107,68,0.12); color: var(--forest); }
+.tag-invite { background: rgba(43,33,27,0.06); color: var(--text-tertiary); }
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+.divider { height: 0.5px; background: var(--border); margin: 0; }
+.divider-pad { height: 0.5px; background: var(--border); }
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+.avatar {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.av-sm  { width: 36px; height: 36px; font-size: 14px; }
+.av-md  { width: 44px; height: 44px; font-size: 17px; }
+.av-lg  { width: 60px; height: 60px; font-size: 22px; }
+.av-bark  { background: var(--bark);   color: var(--white); }
+.av-forest{ background: var(--forest); color: var(--white); }
+.av-amber { background: var(--amber);  color: var(--white); }
+.av-blue  { background: #1a4a8a;       color: var(--white); }
+.av-purple{ background: #6a1a8a;       color: var(--white); }
+.av-gold  { background: #7a6010;       color: var(--white); }
+.av-teal  { background: #1a6a6a;       color: var(--white); }
+
+/* =========================================================
+   STAT PILLS (profile)
+   ========================================================= */
+.stat-pill {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 2px; padding: 10px 14px;
+  background: var(--linen2); border-radius: var(--r-md);
+  flex: 1;
+}
+.stat-pill .num { font-size: 20px; font-weight: 700; color: var(--text-primary); }
+.stat-pill .lbl { font-size: 11px; color: var(--text-tertiary); }
+
+/* =========================================================
+   WELCOME MODAL
+   ========================================================= */
+#welcome-overlay {
+  position: fixed; inset: 0;
+  background: rgba(43,33,27,0.6);
+  display: flex; align-items: flex-end;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+#welcome-overlay.hidden { display: none; }
+.welcome-sheet {
+  background: var(--white);
+  border-radius: 24px 24px 0 0;
+  padding: 28px 24px 40px;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+}
+.welcome-mono { font-family: 'Courier New', monospace; }
+
+/* =========================================================
+   EXIT SURVEY
+   ========================================================= */
+#exit-overlay {
+  position: fixed; inset: 0;
+  background: rgba(43,33,27,0.5);
+  display: flex; align-items: flex-end;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+#exit-overlay.hidden { display: none; }
+.exit-sheet {
+  background: var(--white);
+  border-radius: 24px 24px 0 0;
+  padding: 24px 24px 40px;
+  width: 100%; max-width: 390px; margin: 0 auto;
+}
+.exit-sheet textarea {
+  width: 100%; border: 1.5px solid var(--border);
+  border-radius: var(--r-md); padding: 12px 14px;
+  font-family: var(--font-body); font-size: 15px;
+  color: var(--text-primary); resize: none;
+  background: var(--linen);
+}
+
+/* =========================================================
+   ONBOARDING
+   ========================================================= */
+.onb-screen {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 32px 28px 24px; text-align: center;
+  background: var(--linen);
+}
+.onb-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 32px; }
+.onb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--linen2); transition: background 0.2s; }
+.onb-dot.active { background: var(--forest); width: 24px; border-radius: 4px; }
+.onb-illus { width: 220px; height: 180px; object-fit: contain; margin: 0 auto 28px; }
+.onb-title { font-family: var(--font-head); font-size: 26px; font-weight: 800; margin-bottom: 14px; color: var(--text-primary); line-height: 1.25; }
+.onb-text { font-size: 16px; color: var(--text-secondary); line-height: 1.65; max-width: 280px; }
+.onb-nav { display: flex; gap: 12px; padding: 0 20px 32px; }
+.onb-back {
+  min-width: var(--touch); min-height: var(--touch);
+  background: none; border: 1.5px solid var(--border);
+  border-radius: var(--r-md); color: var(--text-secondary);
+  display: flex; align-items: center; justify-content: center; padding: 0 16px;
+  font-size: 16px; font-weight: 600;
+}
+
+/* =========================================================
+   ACTIVITY DETAIL + CAROUSEL
+   ========================================================= */
+.carousel-wrap { position: relative; }
+.carousel-img {
+  width: 100%; height: 220px; object-fit: cover;
+  border-radius: var(--r-lg); background: var(--linen2);
+  display: block;
+}
+.carousel-dots { display: flex; justify-content: center; gap: 5px; padding: 10px 0; }
+.carousel-dot { width: 8px; height: 4px; border-radius: 2px; background: var(--linen2); transition: all 0.2s; }
+.carousel-dot.active { width: 24px; background: var(--forest); }
+.carousel-counter { font-size: 13px; color: var(--text-tertiary); }
+.carousel-btns { display: flex; gap: 10px; }
+.step-title { font-size: 19px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.step-text { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
+
+/* =========================================================
+   BARDA
+   ========================================================= */
+.kit-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.kit-item:last-child { border-bottom: none; }
+.kit-photo {
+  width: 48px; height: 48px; border-radius: var(--r-sm);
+  background: var(--linen2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.kit-photo img { width: 100%; height: 100%; object-fit: cover; }
+.kit-name { font-size: 15px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.kit-desc { font-size: 13px; color: var(--text-tertiary); margin-top: 2px; }
+.kit-season-card {
+  background: var(--white); border-radius: var(--r-md);
+  padding: 14px 16px; display: flex; align-items: center; gap: 14px;
+}
+.kit-season-thumb {
+  width: 72px; height: 72px; border-radius: var(--r-sm);
+  flex-shrink: 0; overflow: hidden; background: var(--linen2);
+}
+.kit-season-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================================
+   TRIBU
+   ========================================================= */
+.tribu-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1.5px solid rgba(53,107,68,0.2);
+}
+.tribu-header {
+  background: var(--forest);
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.famille-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 18px;
+  border-bottom: 0.5px solid var(--border);
+}
+.famille-row:last-child { border-bottom: none; }
+
+/* =========================================================
+   ADMIN PANEL
+   ========================================================= */
+.admin-panel {
+  background: var(--bark);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  margin-top: 4px;
+}
+.admin-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
+}
+.admin-btn {
+  background: rgba(255,255,255,0.1);
+  border: none; border-radius: var(--r-sm);
+  padding: 10px 8px; font-size: 13px; font-weight: 600; color: var(--white);
+  min-height: var(--touch); display: flex; align-items: center; gap: 6px;
+  transition: background 0.15s;
+}
+.admin-btn:hover { background: rgba(255,255,255,0.18); }
+.admin-btn-full {
+  background: rgba(255,255,255,0.15); border: none; border-radius: var(--r-sm);
+  padding: 11px; font-size: 13px; font-weight: 600; color: var(--white);
+  min-height: var(--touch); display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; margin-top: 8px;
+}
+
+/* =========================================================
+   PROFILE ROW
+   ========================================================= */
+.pref-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 16px;
+  border-bottom: 0.5px solid var(--border);
+}
+.pref-row:last-child { border-bottom: none; }
+.pref-label { font-size: 15px; color: var(--text-primary); display: flex; align-items: center; gap: 10px; }
+.pref-label i { font-size: 18px; color: var(--text-tertiary); }
+
+/* =========================================================
+   HERO IMAGE (activité cover)
+   ========================================================= */
+.hero-img {
+  width: 100%; height: 220px; object-fit: cover;
+  display: block; background: var(--linen2);
+}
+.hero-wrap {
+  position: relative; flex-shrink: 0;
+}
+.hero-back {
+  position: absolute; top: 14px; left: 14px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--text-primary);
+}
+.hero-bookmark {
+  position: absolute; top: 14px; right: 14px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--text-primary);
+}
+.hero-tags {
+  position: absolute; bottom: 14px; left: 14px;
+  display: flex; gap: 6px;
+}
+
+/* =========================================================
+   META CHIPS (activité)
+   ========================================================= */
+.meta-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+.meta-chip {
+  background: var(--linen2); border-radius: var(--r-md);
+  padding: 10px 6px; text-align: center;
+}
+.meta-chip .val { font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 2px 0; }
+.meta-chip .lbl { font-size: 11px; color: var(--text-tertiary); }
+
+/* =========================================================
+   HOME — featured card
+   ========================================================= */
+.featured-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 0 16px;
+}
+.featured-img {
+  width: 100%; height: 170px; object-fit: cover;
+  display: block; background: linear-gradient(135deg, #b8dbbf, #7db88a);
+}
+.featured-body { padding: 14px 16px 16px; }
+.suggestion-card {
+  flex: 0 0 150px; background: var(--white); border-radius: var(--r-md); overflow: hidden;
+}
+.suggestion-thumb {
+  height: 90px; background: var(--linen2);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.suggestion-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.suggestion-body { padding: 10px 12px; }
+
+/* =========================================================
+   SPLASH
+   ========================================================= */
+.splash-screen {
+  background: var(--linen);
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+}
+.splash-logo { width: 80px; }
+.splash-title {
+  font-family: var(--font-head);
+  font-size: 40px; font-weight: 900;
+  color: var(--bark); letter-spacing: -1px;
+}
+.splash-excl { color: var(--amber); }
+
+/* =========================================================
+   FORM ELEMENTS
+   ========================================================= */
+.input {
+  width: 100%; background: var(--linen2);
+  border: 1.5px solid var(--border); border-radius: var(--r-md);
+  padding: 14px 16px; font-size: 16px; font-family: var(--font-body);
+  color: var(--text-primary); outline: none;
+  min-height: var(--touch);
+}
+.input:focus { border-color: var(--forest); background: var(--white); }
+.input-label { font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+
+</style>
+</head>
+<body>
+
+<div class="frame" id="app">
+
+  <!-- =====================================================
+       SPLASH
+       ===================================================== -->
+  <section data-screen="splash" class="active">
+    <div class="splash-screen">
+      <img src="assets/logo.png" alt="Logo Cabanes" class="splash-logo" onerror="this.style.display='none'">
+      <div class="splash-title">CABANES<span class="splash-excl">!</span></div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       ONBOARDING — 4 étapes
+       ===================================================== -->
+  <section data-screen="onboarding">
+    <div class="onb-screen" id="onb-content">
+      <!-- contenu injecté dynamiquement -->
+    </div>
+    <div class="onb-nav" id="onb-nav">
+      <button class="onb-back btn" id="onb-back-btn" onclick="onbBack()" aria-label="Étape précédente" hidden>
+        <i class="ti ti-arrow-left" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-primary btn-full" id="onb-next-btn" onclick="onbNext()" data-track="onb-next">
+        Suivant
+      </button>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       REGISTER
+       ===================================================== -->
+  <section data-screen="register">
+    <div class="pad" style="padding-top:48px;">
+      <div style="margin-bottom:28px;">
+        <div class="h1" style="margin-bottom:8px;">Bienvenue !</div>
+        <div class="body">Créez votre compte pour commencer.</div>
+      </div>
+      <div class="stack stack-md">
+        <div>
+          <div class="input-label">Votre prénom</div>
+          <input class="input" type="text" id="reg-prenom" placeholder="Marie" autocomplete="given-name">
+        </div>
+        <div>
+          <div class="input-label">Adresse e-mail</div>
+          <input class="input" type="email" id="reg-email" placeholder="marie@exemple.fr" autocomplete="email">
+        </div>
+        <div>
+          <div class="input-label">Mot de passe</div>
+          <input class="input" type="password" id="reg-pwd" placeholder="••••••••">
+        </div>
+      </div>
+      <div style="margin-top:28px;" class="stack stack-md">
+        <button class="btn btn-primary btn-full" onclick="goTo('children')" data-track="register-submit">
+          Créer mon compte
+        </button>
+        <button class="btn btn-ghost btn-full" onclick="goTo('children')" data-track="register-login">
+          Déjà un compte ? Se connecter
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CHILDREN
+       ===================================================== -->
+  <section data-screen="children">
+    <div class="pad" style="padding-top:48px;">
+      <div style="margin-bottom:24px;">
+        <div class="h1" style="margin-bottom:8px;">Vos enfants</div>
+        <div class="body">Ajoutez leurs prénoms et âges pour des suggestions adaptées.</div>
+      </div>
+      <div class="stack stack-md" id="children-list">
+        <div class="card-pad card stack stack-sm">
+          <div class="row" style="gap:12px;">
+            <input class="input" type="text" placeholder="Prénom" style="flex:1;">
+            <input class="input" type="number" placeholder="Âge" style="width:80px;" min="3" max="17">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-dashed btn-full" style="margin-top:12px;" data-track="add-child" data-dead-end="true">
+        <i class="ti ti-plus" aria-hidden="true"></i> Ajouter un enfant
+      </button>
+      <div style="margin-top:32px;" class="stack stack-md">
+        <button class="btn btn-primary btn-full" onclick="goTo('access')" data-track="children-continue">
+          Continuer
+        </button>
+        <button class="onb-back btn" onclick="goTo('register')">
+          <i class="ti ti-arrow-left" aria-hidden="true"></i> Retour
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       ACCESS
+       ===================================================== -->
+  <section data-screen="access">
+    <div class="pad" style="padding-top:48px;">
+      <div style="margin-bottom:28px;">
+        <div class="h1" style="margin-bottom:8px;">Comment accéder ?</div>
+        <div class="body">Choisissez votre mode d'accès aux fonctionnalités Cabanes !</div>
+      </div>
+      <div class="stack stack-md">
+        <button class="card-pad card" style="text-align:left; border:2px solid var(--forest); border-radius:var(--r-lg); width:100%;" onclick="goTo('home')" data-track="access-trial">
+          <div class="row" style="gap:12px; margin-bottom:8px;">
+            <i class="ti ti-gift" style="font-size:24px; color:var(--forest);" aria-hidden="true"></i>
+            <div class="h3">Essai gratuit — 1 mois</div>
+          </div>
+          <div class="body" style="font-size:14px;">Accès complet pendant 30 jours. Sans carte bancaire.</div>
+        </button>
+
+        <button class="card-pad card" style="text-align:left; border:1.5px solid var(--border); border-radius:var(--r-lg); width:100%;" onclick="goTo('home')" data-track="access-commune">
+          <div class="row" style="gap:12px; margin-bottom:8px;">
+            <i class="ti ti-building-community" style="font-size:24px; color:var(--amber);" aria-hidden="true"></i>
+            <div class="h3">Code commune</div>
+          </div>
+          <div class="body" style="font-size:14px;">Votre commune partenaire vous donne un accès gratuit. Entrez votre code.</div>
+          <input class="input" type="text" placeholder="Ex. : MEUDON2026" style="margin-top:12px;" onclick="event.stopPropagation()">
+        </button>
+
+        <button class="card-pad card" style="text-align:left; border:1.5px solid var(--border); border-radius:var(--r-lg); width:100%;" onclick="goTo('home')" data-track="access-free">
+          <div class="row" style="gap:12px; margin-bottom:8px;">
+            <i class="ti ti-leaf" style="font-size:24px; color:var(--text-tertiary);" aria-hidden="true"></i>
+            <div class="h3">Version gratuite</div>
+          </div>
+          <div class="body" style="font-size:14px;">Accès aux activités découverte. Fonctionnalités communautaires débloquées avec un abonnement.</div>
+        </button>
+      </div>
+      <button class="onb-back btn" style="margin-top:20px; width:100%;" onclick="goTo('children')">
+        <i class="ti ti-arrow-left" aria-hidden="true"></i> Retour
+      </button>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       HOME
+       ===================================================== -->
+  <section data-screen="home">
+    <div style="overflow-y:auto; flex:1; padding-bottom:16px;">
+
+      <!-- Header -->
+      <div class="pad" style="padding-bottom:4px; display:flex; align-items:flex-start; justify-content:space-between; padding-top:20px;">
+        <div>
+          <div class="h1">Bonjour, Marie</div>
+          <div class="body" style="font-size:15px; margin-top:3px;">Que fait-on ce week-end ?</div>
+        </div>
+        <button class="avatar av-md av-amber" onclick="goTo('profile')" aria-label="Mon profil" data-track="home-to-profile">M</button>
+      </div>
+
+      <!-- Activité du moment -->
+      <div class="section-header">
+        <div class="label">Activité du moment</div>
+      </div>
+      <div class="featured-card" onclick="goTo('detail-piege')" data-track="featured-piege" style="cursor:pointer;">
+        <div style="position:relative;">
+          <img src="assets/1-piege_insectes_cover.png" alt="Piège à insectes" class="featured-img">
+          <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:6px;">
+            <span class="tag tag-green">Forêt / Jardin</span>
+            <span class="tag tag-gray">6–10 ans</span>
+          </div>
+        </div>
+        <div class="featured-body">
+          <div class="h3" style="margin-bottom:6px;">Piège à insectes</div>
+          <div class="body" style="font-size:15px; margin-bottom:14px;">Construis un piège Barber pour capturer et relâcher les insectes du sol.</div>
+          <div class="row" style="gap:16px; margin-bottom:14px;">
+            <div class="row" style="gap:5px; font-size:14px; color:var(--text-tertiary);">
+              <i class="ti ti-clock" style="font-size:15px;" aria-hidden="true"></i> 1h30
+            </div>
+            <div class="row" style="gap:5px; font-size:14px; color:var(--text-tertiary);">
+              <i class="ti ti-users" style="font-size:15px;" aria-hidden="true"></i> 2 à 6
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" data-track="featured-piege-cta">Voir l'activité →</button>
+        </div>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;">
+        <div class="label">Suggestions pour toi</div>
+        <button style="font-size:13px;color:var(--forest);background:none;border:none;font-weight:600;" data-dead-end="true" data-track="voir-tout">Voir tout</button>
+      </div>
+      <div style="display:flex;gap:12px;padding:0 16px 4px;overflow-x:auto;scrollbar-width:none;">
+        <div class="suggestion-card" onclick="goTo('detail-abri')" data-track="suggest-abri" style="cursor:pointer;">
+          <div class="suggestion-thumb">
+            <img src="assets/AbriSurvie_cover.png" alt="Abri de survie">
+          </div>
+          <div class="suggestion-body">
+            <div style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;">Abri de survie</div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">2h · 8+ ans</div>
+          </div>
+        </div>
+        <div class="suggestion-card" data-track="suggest-meteo" data-dead-end="true" style="cursor:pointer;">
+          <div class="suggestion-thumb">
+            <img src="assets/activite_stationmeteo.png" alt="Station météo">
+          </div>
+          <div class="suggestion-body">
+            <div style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;">Station météo</div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">1h · 7+ ans</div>
+          </div>
+        </div>
+        <div class="suggestion-card" data-track="suggest-pluvio" data-dead-end="true" style="cursor:pointer;">
+          <div class="suggestion-thumb">
+            <img src="assets/activite_pluviometre.png" alt="Pluviomètre">
+          </div>
+          <div class="suggestion-body">
+            <div style="font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3;">Pluviomètre</div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">45 min · 6+ ans</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item active" onclick="goTo('home')" aria-current="page" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       DETAIL — PIÈGE À INSECTES (avec carrousel)
+       ===================================================== -->
+  <section data-screen="detail-piege">
+    <div style="overflow-y:auto;flex:1;">
+
+      <!-- Hero -->
+      <div class="hero-wrap">
+        <img src="assets/1-piege_insectes_cover.png" alt="Piège à insectes" class="hero-img">
+        <button class="hero-back" onclick="goTo('home')" aria-label="Retour" data-track="detail-back">
+          <i class="ti ti-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="hero-bookmark" aria-label="Enregistrer" data-track="detail-bookmark" data-dead-end="true">
+          <i class="ti ti-bookmark" aria-hidden="true"></i>
+        </button>
+        <div class="hero-tags">
+          <span class="tag tag-green">Forêt / Jardin</span>
+          <span class="tag tag-gray">6–10 ans</span>
+        </div>
+      </div>
+
+      <div class="pad">
+        <div class="h1" style="margin-bottom:10px;">Piège à insectes</div>
+
+        <!-- Méta -->
+        <div class="meta-grid" style="margin-bottom:20px;">
+          <div class="meta-chip"><div style="font-size:18px;">⏱</div><div class="val">1h30</div><div class="lbl">Durée</div></div>
+          <div class="meta-chip"><div style="font-size:18px;">👦</div><div class="val">6–10 ans</div><div class="lbl">Âge</div></div>
+          <div class="meta-chip"><div style="font-size:18px;">👨‍👩‍👦</div><div class="val">2 à 6</div><div class="lbl">Participants</div></div>
+        </div>
+
+        <!-- Description -->
+        <div class="body" style="margin-bottom:20px;">
+          Construis un piège Barber pour capturer, observer et relâcher les insectes du sol. Une façon concrète de découvrir la biodiversité qui vit juste sous nos pieds.
+        </div>
+
+        <!-- Matériel -->
+        <div style="margin-bottom:24px;">
+          <div class="label" style="margin-bottom:10px;">Matériel nécessaire</div>
+          <div class="card card-pad stack" style="gap:10px;">
+            <div class="row" style="gap:10px;font-size:15px;color:var(--text-primary);">🥤 1 grande bouteille en plastique</div>
+            <div class="row" style="gap:10px;font-size:15px;color:var(--text-primary);">✂️ Des ciseaux ou un couteau (adulte)</div>
+            <div class="row" style="gap:10px;font-size:15px;color:var(--text-primary);">🍬 Un peu de nourriture sucrée (appât)</div>
+            <div class="row" style="gap:10px;font-size:15px;color:var(--text-primary);">🔍 Loupe (incluse dans le Kit Barda)</div>
+            <div class="row" style="gap:10px;font-size:15px;color:var(--text-primary);">🩹 Scotch adhésif</div>
+          </div>
+        </div>
+
+        <!-- Carrousel étapes -->
+        <div class="label" style="margin-bottom:10px;">Les étapes</div>
+
+        <!-- Indicateur textuel (RGA) -->
+        <div class="row-between" style="margin-bottom:10px;">
+          <div class="carousel-counter" id="step-counter" aria-live="polite">Étape 1 sur 4</div>
+          <div class="carousel-dots" id="step-dots"></div>
+        </div>
+
+        <!-- Image étape -->
+        <div class="carousel-wrap" style="margin-bottom:16px;">
+          <img id="step-img" src="assets/2-piege_insectes_step1.png" alt="" class="carousel-img">
+        </div>
+
+        <!-- Texte étape -->
+        <div class="card card-pad" style="margin-bottom:16px;">
+          <div class="step-title" id="step-title">Couper la bouteille</div>
+          <div class="step-text" id="step-text">Coupe le tiers supérieur de la bouteille en plastique. Tu obtiens deux morceaux : le haut (entonnoir) et la base (récipient).</div>
+        </div>
+
+        <!-- Boutons navigation carrousel -->
+        <div class="carousel-btns" style="margin-bottom:32px;">
+          <button class="btn btn-ghost" id="step-prev" onclick="stepPrev()" aria-label="Étape précédente" style="flex:1;" hidden>
+            <i class="ti ti-arrow-left" aria-hidden="true"></i> Précédente
+          </button>
+          <button class="btn btn-primary" id="step-next" onclick="stepNext()" aria-label="Étape suivante" style="flex:1;">
+            Suivante <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item active" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       DETAIL — ABRI DE SURVIE
+       ===================================================== -->
+  <section data-screen="detail-abri">
+    <div style="overflow-y:auto;flex:1;">
+      <div class="hero-wrap">
+        <img src="assets/AbriSurvie_cover.png" alt="Abri de survie" class="hero-img">
+        <button class="hero-back" onclick="goTo('home')" aria-label="Retour" data-track="abri-back">
+          <i class="ti ti-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="hero-bookmark" aria-label="Enregistrer" data-track="abri-bookmark" data-dead-end="true">
+          <i class="ti ti-bookmark" aria-hidden="true"></i>
+        </button>
+        <div class="hero-tags">
+          <span class="tag tag-green">Forêt</span>
+          <span class="tag tag-gray">8–14 ans</span>
+        </div>
+      </div>
+      <div class="pad">
+        <div class="h1" style="margin-bottom:10px;">Abri de survie</div>
+        <div class="meta-grid" style="margin-bottom:20px;">
+          <div class="meta-chip"><div style="font-size:18px;">⏱</div><div class="val">2h</div><div class="lbl">Durée</div></div>
+          <div class="meta-chip"><div style="font-size:18px;">👦</div><div class="val">8–14 ans</div><div class="lbl">Âge</div></div>
+          <div class="meta-chip"><div style="font-size:18px;">👨‍👩‍👦</div><div class="val">2 à 8</div><div class="lbl">Participants</div></div>
+        </div>
+        <div class="body" style="margin-bottom:20px;">Construis un vrai abri de débris en forêt : fartière, chevrons, feuilles superposées comme des écailles. Une construction qui tient au vent.</div>
+        <div class="label" style="margin-bottom:10px;">Étapes illustrées</div>
+        <div class="stack stack-md">
+          <div class="card" style="overflow:hidden;">
+            <img src="assets/abri_step1.png" alt="Étape 1 — choisir l'emplacement" style="width:100%;max-height:180px;object-fit:cover;">
+            <div class="card-pad"><div class="step-title">Choisir l'emplacement</div><div class="step-text">Terrain plat, à l'abri du vent, à distance des sentiers. Espace de travail d'au moins 2 × 3 m.</div></div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <img src="assets/abri_materiaux.png" alt="Matériaux" style="width:100%;max-height:180px;object-fit:cover;">
+            <div class="card-pad"><div class="step-title">Rassembler les matériaux</div><div class="step-text">Branches longues et droites, bâtons courts, feuilles mélangées, frondes de fougère, mousse et lichen.</div></div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <img src="assets/Abri_emplacement.png" alt="Placement idéal" style="width:100%;max-height:180px;object-fit:cover;">
+            <div class="card-pad"><div class="step-title">Placement idéal</div><div class="step-text">Orienté face à l'Est, avec une barrière d'arbres côté vent. Drainage naturel par la pente du terrain.</div></div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <img src="assets/Abri_decoration.png" alt="Revêtement" style="width:100%;max-height:180px;object-fit:cover;">
+            <div class="card-pad"><div class="step-title">Revêtir et isoler</div><div class="step-text">Pose les feuilles comme des écailles de poisson, de bas en haut. Rembourre l'intérieur avec de la mousse.</div></div>
+          </div>
+        </div>
+        <div style="height:24px;"></div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item active" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       PROJETS (dead end)
+       ===================================================== -->
+  <section data-screen="projets">
+    <div style="overflow-y:auto;flex:1;padding-bottom:16px;">
+      <div class="pad" style="padding-top:20px;">
+        <div class="h1" style="margin-bottom:20px;">Mes projets</div>
+        <div class="card card-pad" style="text-align:center;padding:48px 24px;">
+          <i class="ti ti-folder-open" style="font-size:48px;color:var(--text-tertiary);display:block;margin-bottom:12px;" aria-hidden="true"></i>
+          <div class="h3" style="margin-bottom:8px;">Bientôt disponible</div>
+          <div class="body">Retrouvez ici toutes vos activités en cours et réalisées.</div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item active" onclick="goTo('projets')" aria-current="page" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       GROUPES (dead end)
+       ===================================================== -->
+  <section data-screen="groupes">
+    <div style="overflow-y:auto;flex:1;padding-bottom:16px;">
+      <div class="pad" style="padding-top:20px;">
+        <div class="h1" style="margin-bottom:20px;">Groupes</div>
+        <div class="card card-pad" style="text-align:center;padding:48px 24px;">
+          <i class="ti ti-map-pin" style="font-size:48px;color:var(--text-tertiary);display:block;margin-bottom:12px;" aria-hidden="true"></i>
+          <div class="h3" style="margin-bottom:8px;">Fonctionnalité Premium</div>
+          <div class="body" style="margin-bottom:20px;">Retrouvez les familles de votre quartier qui font des activités Cabanes !</div>
+          <button class="btn btn-primary" data-dead-end="true" data-track="groupes-unlock">Débloquer avec Premium</button>
+        </div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item active" onclick="goTo('groupes')" aria-current="page" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       BARDA
+       ===================================================== -->
+  <section data-screen="barda">
+    <div style="overflow-y:auto;flex:1;padding-bottom:16px;">
+
+      <div class="pad" style="padding-top:20px;padding-bottom:0;">
+        <div class="h1" style="margin-bottom:6px;">Le Barda</div>
+        <div class="body" style="font-size:15px;">L'équipement physique pour vivre pleinement chaque saison avec vos enfants.</div>
+      </div>
+
+      <!-- Kit Été — actif -->
+      <div style="padding:16px 16px 0;">
+        <div class="label" style="margin-bottom:10px;">Kit en cours · Été 2026</div>
+        <div class="tribu-card" style="border-color:var(--forest);">
+          <div class="tribu-header" style="flex-direction:column;align-items:flex-start;gap:4px;position:relative;">
+            <div style="font-size:18px;font-weight:800;font-family:var(--font-head);color:var(--white);">Kit Été Cabanes !</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.7);">Expédié en juin · 6 objets · 1 enfant</div>
+            <span style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.2);color:white;font-size:11px;font-weight:600;padding:4px 10px;border-radius:var(--r-pill);">Inclus dans ton abo</span>
+          </div>
+          <div style="padding:4px 18px 12px;">
+            <div class="kit-item">
+              <div class="kit-photo"><img src="assets/placeholder.png" alt="" onerror="this.parentElement.innerHTML='<span style=\'font-size:10px;color:#aaa;text-align:center;padding:4px;\'>Photo</span>'"></div>
+              <div><div class="kit-name">Gourde inox double paroi</div><div class="kit-desc">50 cl · logo gravé · Pandacola</div></div>
+            </div>
+            <div class="kit-item">
+              <div class="kit-photo"></div>
+              <div><div class="kit-name">Canif Opinel n°7</div><div class="kit-desc">Manche bois · logo pyrogravé · Opinel Pro</div></div>
+            </div>
+            <div class="kit-item">
+              <div class="kit-photo"></div>
+              <div><div class="kit-name">Cartes activités et nature</div><div class="kit-desc">Recto activités illustrées · verso faune & flore</div></div>
+            </div>
+            <div class="kit-item">
+              <div class="kit-photo"></div>
+              <div><div class="kit-name">Cordelette 20 m</div><div class="kit-desc">Paracorde 3 mm · nœuds et constructions</div></div>
+            </div>
+            <div class="kit-item">
+              <div class="kit-photo"></div>
+              <div><div class="kit-name">Jumelles de poche 8×21</div><div class="kit-desc">Logo tampographié · Vistaprint Pro</div></div>
+            </div>
+            <div class="kit-item">
+              <div class="kit-photo"></div>
+              <div><div class="kit-name">Bob en coton biologique</div><div class="kit-desc">Logo brodé · Camaloon</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Autres kits -->
+      <div style="padding:20px 16px 0;">
+        <div class="label" style="margin-bottom:10px;">Les 4 kits saisonniers</div>
+        <div class="stack stack-md">
+
+          <!-- Automne -->
+          <div class="kit-season-card" onclick="goTo('barda-automne')" data-track="barda-automne" style="cursor:pointer;">
+            <div class="kit-season-thumb">
+              <img src="assets/Autumn_fox.jpeg" alt="Renard automne">
+            </div>
+            <div style="flex:1;">
+              <div class="h3" style="margin-bottom:4px;">Kit Automne</div>
+              <div class="kit-desc" style="line-height:1.5;">Pantalon de pluie · ciré imperméable · gants · chapeau · loupe naturaliste · carnet terrain étanche</div>
+            </div>
+            <i class="ti ti-chevron-right" style="font-size:18px;color:var(--text-tertiary);flex-shrink:0;" aria-hidden="true"></i>
+          </div>
+
+          <!-- Hiver -->
+          <div class="kit-season-card" onclick="goTo('barda-hiver')" data-track="barda-hiver" style="cursor:pointer;">
+            <div class="kit-season-thumb">
+              <img src="assets/winter_fox.jpeg" alt="Renard hiver">
+            </div>
+            <div style="flex:1;">
+              <div class="h3" style="margin-bottom:4px;">Kit Hiver</div>
+              <div class="kit-desc" style="line-height:1.5;">Bonnet polaire · chaufferettes · lampe frontale · thermos · guide traces · mangeoire · graines bio · plâtre · presse-fleurs</div>
+            </div>
+            <i class="ti ti-chevron-right" style="font-size:18px;color:var(--text-tertiary);flex-shrink:0;" aria-hidden="true"></i>
+          </div>
+
+          <!-- Printemps -->
+          <div class="kit-season-card" onclick="goTo('barda-printemps')" data-track="barda-printemps" style="cursor:pointer;">
+            <div class="kit-season-thumb">
+              <img src="assets/spring_fox.jpeg" alt="Renard printemps">
+            </div>
+            <div style="flex:1;">
+              <div class="h3" style="margin-bottom:4px;">Kit Printemps</div>
+              <div class="kit-desc" style="line-height:1.5;">Filet à papillons · kit semis bio · boîte-loupe insectes · sifflet bois · bandana · sac à dos coton · outils jardinage · hôtel à insectes</div>
+            </div>
+            <i class="ti ti-chevron-right" style="font-size:18px;color:var(--text-tertiary);flex-shrink:0;" aria-hidden="true"></i>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tarifs -->
+      <div style="padding:20px 16px 24px;">
+        <div class="label" style="margin-bottom:10px;">Tarifs</div>
+        <div class="stack stack-md">
+          <div class="card card-pad row-between" style="gap:12px;">
+            <div>
+              <div class="h3" style="margin-bottom:3px;">Abonnement 4 Saisons</div>
+              <div class="kit-desc" style="line-height:1.5;">4 kits par an · soit 40,50 € / kit</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-size:24px;font-weight:800;color:var(--forest);font-family:var(--font-head);">162 €</div>
+              <div style="font-size:11px;color:var(--text-tertiary);">/ an</div>
+            </div>
+          </div>
+          <div class="card card-pad row-between" style="gap:12px;">
+            <div>
+              <div class="h3" style="margin-bottom:3px;">Kit solo</div>
+              <div class="kit-desc">Un kit au choix · sans engagement</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-size:24px;font-weight:800;color:var(--amber);font-family:var(--font-head);">49 €</div>
+              <button class="btn btn-amber" style="margin-top:8px;padding:0 16px;font-size:14px;" data-dead-end="true" data-track="barda-kit-solo">Commander</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item active" onclick="goTo('barda')" aria-current="page" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       BARDA — DÉTAILS SAISONS (Automne, Hiver, Printemps)
+       ===================================================== -->
+  <!-- AUTOMNE -->
+  <section data-screen="barda-automne">
+    <div style="overflow-y:auto;flex:1;">
+      <div class="hero-wrap">
+        <img src="assets/Autumn_fox.jpeg" alt="Kit Automne" style="width:100%;height:180px;object-fit:cover;display:block;">
+        <button class="hero-back" onclick="goTo('barda')" aria-label="Retour" data-track="barda-automne-back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      </div>
+      <div class="pad">
+        <div class="h1" style="margin-bottom:4px;">Kit Automne</div>
+        <div class="kit-desc" style="margin-bottom:20px;">Prix public : 49 € · Pour les sorties sous la pluie</div>
+        <div class="card" style="overflow:hidden;">
+          <div style="padding:4px 16px 12px;">
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Pantalon de pluie enfant</div><div class="kit-desc">Sans branding · Decathlon</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Ciré imperméable enfant</div><div class="kit-desc">Logo renard brodé dans le dos · Textile Direct</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Gants renforcés enfant</div><div class="kit-desc">Sans branding · Rostaing</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Chapeau imperméable</div><div class="kit-desc">Logo brodé · Pandacola</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Loupe naturaliste ×10</div><div class="kit-desc">Logo tampographié</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Carnet de terrain étanche</div><div class="kit-desc">Couverture sérigraphiée</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item active" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- HIVER -->
+  <section data-screen="barda-hiver">
+    <div style="overflow-y:auto;flex:1;">
+      <div class="hero-wrap">
+        <img src="assets/winter_fox.jpeg" alt="Kit Hiver" style="width:100%;height:180px;object-fit:cover;display:block;">
+        <button class="hero-back" onclick="goTo('barda')" aria-label="Retour" data-track="barda-hiver-back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      </div>
+      <div class="pad">
+        <div class="h1" style="margin-bottom:4px;">Kit Hiver</div>
+        <div class="kit-desc" style="margin-bottom:20px;">Prix public : 49 € · Face au froid</div>
+        <div class="card" style="overflow:hidden;">
+          <div style="padding:4px 16px 12px;">
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Bonnet polaire</div><div class="kit-desc">Logo brodé · Camaloon</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Chaufferettes réutilisables</div><div class="kit-desc">Logo sérigraphié · Pandacola</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Lampe frontale LED enfant</div><div class="kit-desc">Sans branding</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Thermos inox</div><div class="kit-desc">Logo gravé · Solo Group</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Guide des traces animales</div><div class="kit-desc">Personnalisé · Exaprint</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Mangeoire à oiseaux en kit</div><div class="kit-desc">Bois · logo gravé · Jeujura</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Graines biologiques oiseaux</div><div class="kit-desc">Sans branding</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Plâtre pour empreintes</div><div class="kit-desc">Étiquette personnalisée</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Presse-fleurs en bois</div><div class="kit-desc">Logo gravé · Jeujura</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item active" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- PRINTEMPS -->
+  <section data-screen="barda-printemps">
+    <div style="overflow-y:auto;flex:1;">
+      <div class="hero-wrap">
+        <img src="assets/spring_fox.jpeg" alt="Kit Printemps" style="width:100%;height:180px;object-fit:cover;display:block;">
+        <button class="hero-back" onclick="goTo('barda')" aria-label="Retour" data-track="barda-printemps-back"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      </div>
+      <div class="pad">
+        <div class="h1" style="margin-bottom:4px;">Kit Printemps</div>
+        <div class="kit-desc" style="margin-bottom:20px;">Prix public : 49 € · Découvrir la biodiversité</div>
+        <div class="card" style="overflow:hidden;">
+          <div style="padding:4px 16px 12px;">
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Filet à papillons pliable</div><div class="kit-desc">Sans branding</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Kit de semis biologique</div><div class="kit-desc">Emballage personnalisé · Idées Nature</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Boîte-loupe à insectes</div><div class="kit-desc">Sans branding</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Sifflet de sécurité en bois</div><div class="kit-desc">Logo gravé · Jeujura</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Bandana coton mascotte</div><div class="kit-desc">Motif imprimé · Textile Direct</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Sac à dos léger en toile</div><div class="kit-desc">Grand logo imprimé · Camaloon</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Set 3 outils jardinage</div><div class="kit-desc">Logo gravé sur les manches</div></div></div>
+            <div class="kit-item"><div class="kit-photo"></div><div><div class="kit-name">Hôtel à insectes en kit</div><div class="kit-desc">Bois · logo gravé · Jeujura</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item active" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item" onclick="goTo('profile')" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       PROFIL
+       ===================================================== -->
+  <section data-screen="profile">
+    <div style="overflow-y:auto;flex:1;padding-bottom:16px;">
+
+      <!-- Header profil -->
+      <div class="pad" style="padding-top:20px;display:flex;align-items:center;gap:16px;margin-bottom:4px;">
+        <div class="avatar av-lg av-amber">E</div>
+        <div style="flex:1;">
+          <div class="h1" style="margin-bottom:4px;">Eva</div>
+          <div class="kit-desc">2 enfants · Meudon</div>
+          <div style="display:flex;gap:8px;margin-top:10px;">
+            <span class="tag tag-green">12 projets</span>
+            <span class="tag tag-amber">3 défis</span>
+            <span class="tag tag-gray">2 badges</span>
+          </div>
+        </div>
+        <button style="background:none;border:none;color:var(--text-tertiary);min-width:var(--touch);min-height:var(--touch);display:flex;align-items:center;justify-content:center;" aria-label="Modifier le profil" data-dead-end="true" data-track="edit-profile">
+          <i class="ti ti-edit" style="font-size:20px;" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- ── TRIBUS ── -->
+      <div style="padding:16px 16px 0;">
+        <div class="label" style="margin-bottom:10px;">Mes tribus</div>
+
+        <div class="tribu-card">
+          <div class="tribu-header">
+            <div>
+              <div style="font-size:17px;font-weight:700;color:var(--white);font-family:var(--font-head);">Les Renards de Meudon</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:2px;">5 familles · Forêt de Meudon</div>
+            </div>
+            <i class="ti ti-chevron-right" style="font-size:20px;color:rgba(255,255,255,0.5);" aria-hidden="true"></i>
+          </div>
+
+          <div class="famille-row">
+            <div class="avatar av-md av-forest">M</div>
+            <div style="flex:1;">
+              <div class="h3" style="font-size:15px;">Famille Martin</div>
+              <div class="kit-desc">Lucas, 8 ans · Chloé, 11 ans</div>
+            </div>
+            <span class="tag tag-active">Actif</span>
+          </div>
+
+          <div class="famille-row">
+            <div class="avatar av-md av-amber">A</div>
+            <div style="flex:1;">
+              <div class="h3" style="font-size:15px;">Famille Amrani</div>
+              <div class="kit-desc">Yanis, 7 ans · Lina, 10 ans</div>
+            </div>
+            <span class="tag tag-active">Actif</span>
+          </div>
+
+          <div class="famille-row">
+            <div class="avatar av-md av-blue">D</div>
+            <div style="flex:1;">
+              <div class="h3" style="font-size:15px;">Famille Diallo</div>
+              <div class="kit-desc">Ibrahima, 9 ans</div>
+            </div>
+            <span class="tag tag-active">Actif</span>
+          </div>
+
+          <div class="famille-row">
+            <div class="avatar av-md av-purple">B</div>
+            <div style="flex:1;">
+              <div class="h3" style="font-size:15px;">Famille Benali</div>
+              <div class="kit-desc">Sonia, 12 ans · Rayan, 8 ans</div>
+            </div>
+            <span class="tag tag-invite">Invité</span>
+          </div>
+
+          <div class="famille-row" style="border-bottom:none;">
+            <div class="avatar av-md av-gold">N</div>
+            <div style="flex:1;">
+              <div class="h3" style="font-size:15px;">Famille Ndoye</div>
+              <div class="kit-desc">Fatou, 10 ans · Moussa, 7 ans</div>
+            </div>
+            <span class="tag tag-active">Actif</span>
+          </div>
+
+          <div style="padding:10px 18px 14px;">
+            <button class="btn btn-dashed btn-full" data-dead-end="true" data-track="invite-famille">
+              <i class="ti ti-plus" aria-hidden="true"></i> Inviter une famille
+            </button>
+          </div>
+        </div>
+
+        <button class="btn btn-ghost btn-full" style="margin-top:10px;" data-dead-end="true" data-track="create-tribu">
+          <i class="ti ti-users-plus" aria-hidden="true"></i> Créer une nouvelle tribu
+        </button>
+      </div>
+
+      <!-- ── MES ENFANTS ── -->
+      <div style="padding:20px 16px 0;">
+        <div class="label" style="margin-bottom:10px;">Mes enfants</div>
+        <div class="card">
+          <div style="padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:0.5px solid var(--border);">
+            <div class="avatar av-md av-forest">L</div>
+            <div><div class="h3" style="font-size:15px;">Léo</div><div class="kit-desc">8 ans · 2 badges</div></div>
+          </div>
+          <div style="padding:12px 16px;display:flex;align-items:center;gap:12px;">
+            <div class="avatar av-md av-amber">E</div>
+            <div><div class="h3" style="font-size:15px;">Emma</div><div class="kit-desc">6 ans · 0 badge</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── COMPTE ── -->
+      <div style="padding:20px 16px 0;">
+        <div class="label" style="margin-bottom:10px;">Compte</div>
+        <div class="card">
+          <div class="pref-row">
+            <div class="pref-label"><i class="ti ti-star" style="color:var(--amber);" aria-hidden="true"></i> Abonnement</div>
+            <span class="tag tag-amber">Premium</span>
+          </div>
+          <div class="pref-row" onclick="" data-dead-end="true" data-track="pref-notifs" style="cursor:pointer;">
+            <div class="pref-label"><i class="ti ti-bell" aria-hidden="true"></i> Notifications</div>
+            <i class="ti ti-chevron-right" style="font-size:17px;color:var(--text-tertiary);" aria-hidden="true"></i>
+          </div>
+          <div class="pref-row" data-dead-end="true" data-track="pref-rgpd" style="cursor:pointer;">
+            <div class="pref-label"><i class="ti ti-lock" aria-hidden="true"></i> Données & RGPD</div>
+            <i class="ti ti-chevron-right" style="font-size:17px;color:var(--text-tertiary);" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── REVOIR L'ONBOARDING ── -->
+      <div style="padding:12px 16px 0;">
+        <button class="btn btn-ghost btn-full" onclick="restartOnboarding()" data-track="restart-onboarding">
+          <i class="ti ti-refresh" aria-hidden="true"></i> Revoir la présentation de l'appli
+        </button>
+      </div>
+
+      <!-- ── ADMIN PANEL (admin uniquement) ── -->
+      <div id="admin-panel" style="padding:12px 16px 0;display:none;">
+        <div class="admin-panel">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.5);text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+            <i class="ti ti-shield" style="font-size:13px;" aria-hidden="true"></i> Administration — Prototype
+          </div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:10px;">Sauter vers n'importe quel écran</div>
+          <div class="admin-grid">
+            <button class="admin-btn" onclick="goTo('home')" data-track="admin-to-home"><i class="ti ti-home" style="font-size:15px;opacity:0.7;" aria-hidden="true"></i> Accueil</button>
+            <button class="admin-btn" onclick="goTo('onboarding');startOnboarding()" data-track="admin-to-onb"><i class="ti ti-device-mobile" style="font-size:15px;opacity:0.7;" aria-hidden="true"></i> Onboarding</button>
+            <button class="admin-btn" onclick="goTo('projets')" data-track="admin-to-projets"><i class="ti ti-folder" style="font-size:15px;opacity:0.7;" aria-hidden="true"></i> Projets</button>
+            <button class="admin-btn" onclick="goTo('groupes')" data-track="admin-to-groupes"><i class="ti ti-map-pin" style="font-size:15px;opacity:0.7;" aria-hidden="true"></i> Groupes</button>
+            <button class="admin-btn" onclick="goTo('barda')" data-track="admin-to-barda"><i class="ti ti-backpack" style="font-size:15px;opacity:0.7;" aria-hidden="true"></i> Barda</button>
+            <button class="admin-btn" onclick="goTo('analytics')" data-track="admin-to-analytics"><i class="ti ti-chart-bar" style="font-size:15px;opacity:0.7;" aria-hidden="true"></i> Analytics</button>
+          </div>
+          <button class="admin-btn-full" onclick="skipAll()" data-track="admin-skip-all">
+            <i class="ti ti-player-skip-forward" style="font-size:15px;" aria-hidden="true"></i> Passer toutes les étapes
+          </button>
+        </div>
+      </div>
+
+      <!-- Déconnexion -->
+      <div style="padding:12px 16px 8px;">
+        <button class="btn btn-full" style="color:#c0392b;background:none;border:none;" data-dead-end="true" data-track="logout">
+          <i class="ti ti-logout" aria-hidden="true"></i> Se déconnecter
+        </button>
+      </div>
+
+    </div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button class="nav-item" onclick="goTo('home')" data-track="nav-home"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+      <button class="nav-item" onclick="goTo('projets')" data-track="nav-projets"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
+      <button class="nav-item" onclick="goTo('groupes')" data-track="nav-groupes"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
+      <button class="nav-item" onclick="goTo('barda')" data-track="nav-barda"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
+      <button class="nav-item active" onclick="goTo('profile')" aria-current="page" data-track="nav-profile"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    </nav>
+  </section>
+
+  <!-- =====================================================
+       ANALYTICS
+       ===================================================== -->
+  <section data-screen="analytics">
+    <div style="overflow-y:auto;flex:1;padding:20px 16px 32px;">
+      <div class="row-between" style="margin-bottom:20px;">
+        <div class="h1">Analytics</div>
+        <button class="btn btn-ghost" onclick="goTo('profile')" style="padding:0 14px;font-size:14px;">← Retour</button>
+      </div>
+      <div id="analytics-content">
+        <div class="card card-pad" style="text-align:center;padding:48px 24px;">
+          <i class="ti ti-chart-bar" style="font-size:48px;color:var(--text-tertiary);display:block;margin-bottom:12px;" aria-hidden="true"></i>
+          <div class="h3" style="margin-bottom:8px;">Chargement des données...</div>
+          <div class="body">Les sessions s'afficheront ici une fois le Supabase configuré.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /frame -->
+
+<!-- =====================================================
+     WELCOME MODAL
+     ===================================================== -->
+<div id="welcome-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+  <div class="welcome-sheet">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:6px;" class="welcome-mono">SESSION DE TEST</div>
+      <div class="h2" id="welcome-title" style="margin-bottom:8px;">Cabanes ! v2</div>
+      <div class="body" style="font-size:14px;">Avant de commencer, deux informations.</div>
+    </div>
+    <div class="stack stack-md">
+      <div>
+        <div class="input-label">Votre prénom</div>
+        <input class="input" type="text" id="w-name" placeholder="Marie" autocomplete="given-name">
+      </div>
+      <div>
+        <div class="input-label">Profil</div>
+        <select class="input" id="w-profile">
+          <option value="">-- Choisir --</option>
+          <option value="parent">Parent</option>
+          <option value="designer">Designer / Étudiant</option>
+          <option value="jury">Jury / Encadrant</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-full" style="margin-top:20px;" onclick="submitWelcome()">Commencer le test</button>
+    <div style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:12px;">Vos interactions sont enregistrées anonymement à des fins de recherche UX.</div>
+  </div>
+</div>
+
+<!-- =====================================================
+     EXIT SURVEY
+     ===================================================== -->
+<div id="exit-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+  <div class="exit-sheet">
+    <div class="h2" id="exit-title" style="margin-bottom:6px;">Merci !</div>
+    <div class="body" style="margin-bottom:20px;font-size:15px;">Une dernière question avant de terminer.</div>
+    <div style="margin-bottom:16px;">
+      <div class="input-label" style="margin-bottom:8px;">Avez-vous trouvé ce que vous cherchiez ?</div>
+      <div style="display:flex;gap:10px;">
+        <button id="exit-yes" class="btn btn-ghost" style="flex:1;" onclick="setExitFound(true)">Oui</button>
+        <button id="exit-no"  class="btn btn-ghost" style="flex:1;" onclick="setExitFound(false)">Non</button>
+      </div>
+    </div>
+    <div style="margin-bottom:20px;">
+      <div class="input-label" style="margin-bottom:6px;">Qu'est-ce qui vous a bloqué ou surpris ?</div>
+      <textarea id="exit-text" rows="3" placeholder="Optionnel — tout retour est utile" style="width:100%;border:1.5px solid var(--border);border-radius:var(--r-md);padding:12px 14px;font-family:var(--font-body);font-size:15px;color:var(--text-primary);resize:none;background:var(--linen);"></textarea>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="submitExit()">Terminer</button>
+  </div>
+</div>
+
+<!-- =====================================================
+     SCRIPTS
+     ===================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* =======================================================
+   CONFIG — REMPLACEZ PAR VOS VRAIES VALEURS
+   ======================================================= */
+const SUPABASE_URL  = 'https://VOTRE_PROJET.supabase.co';
+const SUPABASE_ANON = 'VOTRE_CLE_ANON';
+const ADMIN_EMAILS  = ['mdehgan@gmail.com', 'maxence.laroche.morin@gmail.com'];
+// Pour le prototype, on identifie l'admin par le nom saisi au welcome
+const ADMIN_NAMES   = ['mathieu', 'maxence', 'admin'];
+
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+/* =======================================================
+   SESSION
+   ======================================================= */
+let SESSION_ID = localStorage.getItem('v2_session_id') || null;
+let _currentScreen = null;
+let _screenStart   = Date.now();
+let _exitFound     = null;
+let _isAdmin       = localStorage.getItem('v2_admin') === 'true';
+
+async function startSession({ tester_name, profile }) {
+  const device_type = matchMedia('(pointer:coarse)').matches ? 'mobile' : 'desktop';
+  try {
+    const { data, error } = await sb.from('v2_sessions')
+      .insert({ tester_name, profile, device_type, user_agent: navigator.userAgent })
+      .select().single();
+    if (error) { console.warn('Supabase non configuré — mode offline'); return; }
+    SESSION_ID = data.id;
+    localStorage.setItem('v2_session_id', SESSION_ID);
+  } catch(e) { console.warn('Supabase offline:', e.message); }
+}
+
+/* =======================================================
+   CLICK TRACKING
+   ======================================================= */
+function recordClick({ screen, x_pct, y_pct, label, dead_end = false }) {
+  if (!SESSION_ID) return;
+  if (screen === 'analytics') return;
+  sb.from('v2_clicks').insert({ session_id: SESSION_ID, screen, x_pct, y_pct, label, dead_end })
+    .then(({error}) => { if(error) console.warn('click track:', error.message); });
+}
+
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-track]');
+  if (!t) return;
+  const b = document.documentElement.getBoundingClientRect();
+  recordClick({
+    screen: _currentScreen || 'unknown',
+    x_pct: ((e.clientX - b.left) / b.width)  * 100,
+    y_pct: ((e.clientY - b.top)  / b.height) * 100,
+    label: t.dataset.track,
+    dead_end: t.dataset.deadEnd === 'true'
+  });
+});
+
+/* =======================================================
+   SCREEN TIME
+   ======================================================= */
+function _flushScreenTime() {
+  if (!SESSION_ID || !_currentScreen) return;
+  const seconds = Math.round((Date.now() - _screenStart) / 1000);
+  if (seconds < 1) return;
+  sb.from('v2_screen_times').insert({ session_id: SESSION_ID, screen: _currentScreen, seconds })
+    .then(({error}) => { if(error) console.warn('screen_time:', error.message); });
+}
+
+/* =======================================================
+   NAVIGATION
+   ======================================================= */
+function goTo(name) {
+  _flushScreenTime();
+  document.querySelectorAll('[data-screen]').forEach(s => {
+    s.classList.toggle('active', s.dataset.screen === name);
+  });
+  _currentScreen = name;
+  _screenStart   = Date.now();
+
+  // Update nav active state
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  const map = { home:'nav-home', projets:'nav-projets', groupes:'nav-groupes', barda:'nav-barda', barda_automne:'nav-barda', barda_hiver:'nav-barda', barda_printemps:'nav-barda', profile:'nav-profile' };
+  const key = name.replace('-','_');
+  if (map[key]) {
+    document.querySelectorAll('[data-track="'+map[key]+'"]').forEach(b => b.classList.add('active'));
+  }
+
+  // Scroll to top
+  const screen = document.querySelector('[data-screen="'+name+'"]');
+  if (screen) { const scroll = screen.querySelector('[style*="overflow-y"]'); if(scroll) scroll.scrollTop = 0; }
+}
+
+/* =======================================================
+   WELCOME MODAL
+   ======================================================= */
+function showWelcome() {
+  document.getElementById('welcome-overlay').classList.remove('hidden');
+}
+function submitWelcome() {
+  const name    = document.getElementById('w-name').value.trim() || 'Anonyme';
+  const profile = document.getElementById('w-profile').value || 'autre';
+  document.getElementById('welcome-overlay').classList.add('hidden');
+
+  // Vérifier si admin
+  if (ADMIN_NAMES.includes(name.toLowerCase())) {
+    _isAdmin = true;
+    localStorage.setItem('v2_admin', 'true');
+    document.getElementById('admin-panel').style.display = 'block';
+  }
+
+  startSession({ tester_name: name, profile });
+  startOnboarding();
+  goTo('onboarding');
+}
+
+/* =======================================================
+   EXIT SURVEY
+   ======================================================= */
+function setExitFound(v) {
+  _exitFound = v;
+  document.getElementById('exit-yes').classList.toggle('btn-primary', v === true);
+  document.getElementById('exit-yes').classList.toggle('btn-ghost',   v !== true);
+  document.getElementById('exit-no').classList.toggle('btn-primary',  v === false);
+  document.getElementById('exit-no').classList.toggle('btn-ghost',    v !== false);
+}
+function showExit() { document.getElementById('exit-overlay').classList.remove('hidden'); }
+function submitExit() {
+  const text = document.getElementById('exit-text').value.trim();
+  if (SESSION_ID) {
+    sb.from('v2_exit_surveys').insert({
+      session_id: SESSION_ID,
+      found_what_looking_for: _exitFound,
+      blocker_text: text || null
+    });
+    // Close session
+    sb.from('v2_sessions').update({ ended_at: new Date().toISOString() }).eq('id', SESSION_ID);
+  }
+  document.getElementById('exit-overlay').classList.add('hidden');
+  goTo('splash');
+}
+
+/* =======================================================
+   ONBOARDING
+   ======================================================= */
+const ONB_STEPS = [
+  {
+    fox: 'assets/spring_fox.jpeg',
+    title: 'Dehors, quoi qu\'il arrive',
+    text:  'Cabanes ! propose des activités guidées pas-à-pas pour construire, explorer et observer la nature en famille — été comme hiver.'
+  },
+  {
+    fox: 'assets/summer_fox.jpeg',
+    title: 'Des activités pour les 6–14 ans',
+    text:  'Chaque fiche est adaptée à l\'âge de vos enfants. Durée, matériel, niveau de difficulté : tout est indiqué avant de partir.'
+  },
+  {
+    fox: 'assets/Autumn_fox.jpeg',
+    title: 'Rejoignez votre tribu',
+    text:  'Retrouvez les familles de votre quartier, organisez des sorties communes et partagez vos aventures.'
+  },
+  {
+    fox: 'assets/winter_fox.jpeg',
+    title: 'Le Barda, l\'équipement de saison',
+    text:  'Quatre kits saisonniers livrés chez vous — outils, matériel, surprises — pour que rien ne manque sur le terrain.'
+  }
+];
+let onbStep = 0;
+
+function startOnboarding() { onbStep = 0; renderOnb(); }
+
+function renderOnb() {
+  const s = ONB_STEPS[onbStep];
+  const content = document.getElementById('onb-content');
+  const backBtn = document.getElementById('onb-back-btn');
+  const nextBtn = document.getElementById('onb-next-btn');
+
+  // Dots
+  const dots = ONB_STEPS.map((_, i) =>
+    `<div class="onb-dot${i === onbStep ? ' active' : ''}" aria-hidden="true"></div>`
+  ).join('');
+
+  content.innerHTML = `
+    <div class="onb-dots">${dots}</div>
+    <img src="${s.fox}" alt="" class="onb-illus" aria-hidden="true">
+    <div class="onb-title">${s.title}</div>
+    <p class="onb-text">${s.text}</p>
+  `;
+
+  // Back
+  if (onbStep === 0) {
+    backBtn.hidden = true;
+  } else {
+    backBtn.hidden = false;
+  }
+
+  // Next label
+  if (onbStep === ONB_STEPS.length - 1) {
+    nextBtn.textContent = 'Créer mon compte';
+  } else {
+    nextBtn.textContent = 'Suivant';
+  }
+}
+
+function onbNext() {
+  if (onbStep < ONB_STEPS.length - 1) {
+    onbStep++;
+    renderOnb();
+  } else {
+    goTo('register');
+  }
+}
+
+function onbBack() {
+  if (onbStep > 0) {
+    onbStep--;
+    renderOnb();
+  }
+}
+
+function restartOnboarding() {
+  startOnboarding();
+  goTo('onboarding');
+}
+
+/* =======================================================
+   ADMIN — skip all
+   ======================================================= */
+function skipAll() {
+  goTo('home');
+}
+
+/* =======================================================
+   CARROUSEL ÉTAPES — PIÈGE À INSECTES
+   ======================================================= */
+const STEPS = [
+  {
+    img:   'assets/2-piege_insectes_step1.png',
+    title: 'Couper la bouteille',
+    text:  'Coupe le tiers supérieur de la bouteille en plastique. Tu obtiens deux morceaux : le haut (entonnoir) et la base (récipient).'
+  },
+  {
+    img:   'assets/3-piege_insectes_step2.png',
+    title: 'Inverser et insérer',
+    text:  'Retourne le morceau supérieur et insère-le dans la base, goulot vers le bas. Il doit tenir fermement.'
+  },
+  {
+    img:   'assets/4-piege_insectes_step3.png',
+    title: 'Fixer avec du scotch',
+    text:  'Scotche les deux parties ensemble pour que le piège tienne. Laisse le goulot libre pour laisser entrer les insectes.'
+  },
+  {
+    img:   'assets/5-piege_insectes_step4.png',
+    title: 'Préparer l\'appât',
+    text:  'Verse 2 à 5 cm d\'appât dans la base : levure + bière, eau sucrée ou sucre seul. Place le piège sur le sol près des insectes. Reviens dans quelques heures !'
+  }
+];
+let currentStep = 0;
+
+function renderStep() {
+  const s = STEPS[currentStep];
+  document.getElementById('step-img').src   = s.img;
+  document.getElementById('step-img').alt   = s.title;
+  document.getElementById('step-title').textContent = s.title;
+  document.getElementById('step-text').textContent  = s.text;
+  document.getElementById('step-counter').textContent = `Étape ${currentStep+1} sur ${STEPS.length}`;
+
+  // Dots
+  const dotsEl = document.getElementById('step-dots');
+  dotsEl.innerHTML = STEPS.map((_, i) =>
+    `<div class="carousel-dot${i===currentStep?' active':''}" aria-hidden="true"></div>`
+  ).join('');
+
+  // Buttons
+  const prev = document.getElementById('step-prev');
+  const next = document.getElementById('step-next');
+  prev.hidden = (currentStep === 0);
+  if (currentStep === STEPS.length - 1) {
+    next.innerHTML = 'Terminer <i class="ti ti-check" aria-hidden="true"></i>';
+    next.onclick = () => showExit();
+  } else {
+    next.innerHTML = 'Suivante <i class="ti ti-arrow-right" aria-hidden="true"></i>';
+    next.onclick = stepNext;
+  }
+}
+function stepNext() {
+  if (currentStep < STEPS.length - 1) { currentStep++; renderStep(); }
+}
+function stepPrev() {
+  if (currentStep > 0) { currentStep--; renderStep(); }
+}
+
+/* =======================================================
+   ADMIN PANEL — afficher si admin en localStorage
+   ======================================================= */
+function checkAdmin() {
+  if (_isAdmin) {
+    document.getElementById('admin-panel').style.display = 'block';
+  }
+}
+
+/* =======================================================
+   BOOT
+   ======================================================= */
+window.addEventListener('DOMContentLoaded', () => {
+  checkAdmin();
+  renderStep();  // initialise le carrousel
+
+  // Splash → welcome après 2s
+  setTimeout(() => {
+    if (!SESSION_ID) {
+      showWelcome();
+    } else {
+      // Session existante : aller directement à l'accueil
+      goTo('home');
+    }
+  }, 2000);
+});
+</script>
+</body>
+</html>
