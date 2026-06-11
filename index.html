@@ -204,6 +204,10 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 .anl-chip{white-space:nowrap;padding:6px 10px;border-radius:var(--r-pill);border:1px solid rgba(0,0,0,.15);background:transparent;font-size:12px;cursor:pointer;font-family:inherit}
 .anl-chip.active{background:var(--forest);color:#fff;border-color:var(--forest)}
 .click-log-row{display:flex;gap:8px;font-size:12px;padding:6px 8px;background:rgba(0,0,0,.03);border-radius:6px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:var(--r-md);object-fit:contain}
+.lightbox-caption{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,.7);font-size:14px}
 </style>
 </head>
 <body>
@@ -495,8 +499,27 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
   <div style="padding-bottom:100px;overflow-y:auto">
     <div style="padding:8px 20px 16px"><div style="font-family:var(--font-h);font-size:22px;color:var(--bark)">Le Barda</div><div style="font-size:14px;color:var(--muted);margin-top:2px">Tout l'équipement pour vos aventures</div></div>
 
-    <!-- Abo 4 saisons -->
+    <!-- Kit Été avec photos produit réelles — EN PREMIER -->
     <div class="section"><div style="padding:0 20px">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden">
+        <div style="background:var(--linen2);padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div><div style="font-family:var(--font-h);font-size:18px;color:var(--bark);font-weight:700">Kit Été 2026</div><div style="font-size:13px;color:var(--muted);margin-top:2px">L'essentiel pour explorer la nature cet été</div></div>
+          <div style="font-size:22px;font-weight:800;color:var(--amber)">49 €</div>
+        </div>
+        <div style="padding:16px">
+          <div class="barda-item"><img src="assets/shop/kit_ete/gourde.png" alt="Gourde" class="barda-photo" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in"><div><div class="barda-cat">HYDRATATION</div><div class="barda-name">Gourde inox double paroi</div><div class="barda-desc">50 cl · logo gravé · Pandacola</div></div></div>
+          <div class="barda-item"><img src="assets/shop/kit_ete/opinel.png" alt="Canif Opinel" class="barda-photo" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in"><div><div class="barda-cat">OUTIL</div><div class="barda-name">Canif Opinel n°7 brandé</div><div class="barda-desc">Manche hêtre · logo pyrogravé · virole de sécurité</div></div></div>
+          <div class="barda-item"><div class="barda-photo-ph">Photo</div><div><div class="barda-cat">JEUX</div><div class="barda-name">100 cartes activités &amp; nature</div><div class="barda-desc">Recto activités · verso faune &amp; flore · Exaprint</div></div></div>
+          <div class="barda-item"><img src="assets/shop/kit_ete/cordelette.jpg" alt="Cordelette" class="barda-photo" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in"><div><div class="barda-cat">MATÉRIEL</div><div class="barda-name">Cordelette 20 m</div><div class="barda-desc">Paracorde 3 mm · nœuds et constructions</div></div></div>
+          <div class="barda-item"><img src="assets/shop/kit_ete/jumelles.png" alt="Jumelles" class="barda-photo" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in"><div><div class="barda-cat">OBSERVATION</div><div class="barda-name">Jumelles de poche 8×21</div><div class="barda-desc">Compactes et légères · logo tampographié · Vistaprint Pro</div></div></div>
+          <div class="barda-item"><img src="assets/shop/kit_ete/bob.png" alt="Bob" class="barda-photo" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in"><div><div class="barda-cat">VÊTEMENT</div><div class="barda-name">Bob Cabanes !</div><div class="barda-desc">Coton bio · logo brodé · couleur forêt · Camaloon</div></div></div>
+          <button class="btn-amber-full" data-track="buy-kit-ete" data-dead-end="true" style="margin-top:14px">Ajouter au panier – 49 €</button>
+        </div>
+      </div>
+    </div></div>
+
+    <!-- Abo 4 saisons -->
+    <div class="section" style="margin-top:4px"><div style="padding:0 20px">
       <div style="background:#fff;border:2px solid var(--forest);border-radius:var(--r-lg);overflow:hidden;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:var(--amber);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:var(--r-pill)">ÉCONOMISEZ 10%</div>
         <div style="background:var(--forest);padding:20px">
@@ -515,25 +538,6 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
           <div class="season-row"><div style="width:40px;height:40px;border-radius:50%;flex-shrink:0;overflow:hidden"><img src="assets/spring_fox.jpeg" alt="" style="width:100%;height:100%;object-fit:cover"></div><div><div class="barda-name">Kit Printemps</div><div class="barda-desc">Filet à papillons, kit semis bio, boîte-loupe insectes, sifflet, bandana, sac à dos, hôtel à insectes</div></div></div>
           <button class="btn-primary" data-track="buy-4saisons" data-dead-end="true" style="margin-top:14px">S'abonner – 162 € / an</button>
           <div style="text-align:center;font-size:13px;color:var(--muted);margin-top:8px">Livraison offerte · Sans engagement · Annulable à tout moment</div>
-        </div>
-      </div>
-    </div></div>
-
-    <!-- Kit Été avec photos produit réelles -->
-    <div class="section" style="margin-top:4px"><div style="padding:0 20px">
-      <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden">
-        <div style="background:var(--linen2);padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
-          <div><div style="font-family:var(--font-h);font-size:18px;color:var(--bark);font-weight:700">Kit Été 2026</div><div style="font-size:13px;color:var(--muted);margin-top:2px">L'essentiel pour explorer la nature cet été</div></div>
-          <div style="font-size:22px;font-weight:800;color:var(--amber)">49 €</div>
-        </div>
-        <div style="padding:16px">
-          <div class="barda-item"><img src="assets/shop/kit_ete/gourde.png" alt="Gourde" class="barda-photo"><div><div class="barda-cat">HYDRATATION</div><div class="barda-name">Gourde inox double paroi</div><div class="barda-desc">50 cl · logo gravé · Pandacola</div></div></div>
-          <div class="barda-item"><img src="assets/shop/kit_ete/opinel.png" alt="Canif Opinel" class="barda-photo"><div><div class="barda-cat">OUTIL</div><div class="barda-name">Canif Opinel n°7 brandé</div><div class="barda-desc">Manche hêtre · logo pyrogravé · virole de sécurité</div></div></div>
-          <div class="barda-item"><div class="barda-photo-ph">Photo</div><div><div class="barda-cat">JEUX</div><div class="barda-name">100 cartes activités &amp; nature</div><div class="barda-desc">Recto activités · verso faune &amp; flore · Exaprint</div></div></div>
-          <div class="barda-item"><img src="assets/shop/kit_ete/cordelette.jpg" alt="Cordelette" class="barda-photo"><div><div class="barda-cat">MATÉRIEL</div><div class="barda-name">Cordelette 20 m</div><div class="barda-desc">Paracorde 3 mm · nœuds et constructions</div></div></div>
-          <div class="barda-item"><img src="assets/shop/kit_ete/jumelles.png" alt="Jumelles" class="barda-photo"><div><div class="barda-cat">OBSERVATION</div><div class="barda-name">Jumelles de poche 8×21</div><div class="barda-desc">Compactes et légères · logo tampographié · Vistaprint Pro</div></div></div>
-          <div class="barda-item"><img src="assets/shop/kit_ete/bob.png" alt="Bob" class="barda-photo"><div><div class="barda-cat">VÊTEMENT</div><div class="barda-name">Bob Cabanes !</div><div class="barda-desc">Coton bio · logo brodé · couleur forêt · Camaloon</div></div></div>
-          <button class="btn-amber-full" data-track="buy-kit-ete" data-dead-end="true" style="margin-top:14px">Ajouter au panier – 49 €</button>
         </div>
       </div>
     </div></div>
@@ -796,6 +800,12 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <button id="exit-submit" style="width:100%;height:48px;background:#000;color:#fff;border:0;border-radius:3px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font-b)">Envoyer mes retours →</button>
     <button onclick="document.getElementById('exit-survey').style.display='none'" style="width:100%;background:none;border:0;font-size:13px;color:#888;cursor:pointer;font-family:var(--font-b);padding:10px 0;margin-top:4px">Passer</button>
   </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image agrandie">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -1171,6 +1181,15 @@ async function renderClickLog(sid){
   w.innerHTML=data.map(c=>{const t=new Date(c.timestamp).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});return'<div class="click-log-row">'+(c.dead_end?'<span style="color:#ef4444">●</span>':'<span style="color:#10b981">●</span>')+'<span style="opacity:.5;min-width:55px">'+t+'</span><span style="font-weight:600;min-width:70px">'+c.screen+'</span><span style="opacity:.8">'+(c.label||'')+'</span>'+(c.dead_end?'<span style="font-size:12px;color:#ef4444;margin-left:auto">DEAD END</span>':'')+'</div>';}).join('');
 }
 function _anlEnter(){renderTesterList();}
+
+/* LIGHTBOX */
+function openLightbox(src,alt){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-caption').textContent=alt||'';
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
 /* BOOT */
 window.addEventListener('DOMContentLoaded',()=>{
