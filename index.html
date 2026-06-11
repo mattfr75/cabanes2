@@ -42,7 +42,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 @keyframes splashLogoPop{from{opacity:0;transform:scale(.85) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes splashTagFade{from{opacity:0;transform:translateY(6px)}to{opacity:.7;transform:translateY(0)}}
 [data-screen="onboarding"]{background:var(--linen);overflow:hidden}
-.onb-hero{width:100%;height:46vh;background-size:80% auto;background-position:center;background-repeat:no-repeat;background-color:#faf6ef;flex-shrink:0}
+.onb-hero{width:100%;height:46vh;background-size:contain;background-position:center center;background-repeat:no-repeat;background-color:#faf6ef;flex-shrink:0}
 .onb-content{flex:1;display:flex;flex-direction:column;padding:20px 20px 16px;min-height:0}
 .onb-title{font-family:var(--font-h);font-size:22px;color:var(--bark);margin-bottom:10px;line-height:1.3}
 .onb-body{font-size:15px;color:var(--muted);line-height:1.6;white-space:pre-line}
@@ -926,17 +926,161 @@ const ONB_STEPS=[
   {image:'assets/feuille.png',title:'Les weekends, on fait quoi ?',body:"Les enfants s'ennuient, les parents culpabilisent. La nature est là, mais inutilisée."},
   {image:'assets/renard.png',title:'Chaque weekend, un projet nature pour votre famille.',body:'Des activités ludiques, préparées, détaillées et éducatives. Zéro logistique pour vous.'},
   {image:'assets/coquelicot.png',title:'Choisissez, sortez et fabriquez !',body:"1. Vous choisissez une activité selon votre localisation et l'âge de vos enfants\n2. Vous suivez les étapes illustrées, avec la liste du matériel\n3. Vous explorez, en famille ou avec d'autres familles du quartier"},
-  {image:'assets/carte_onb.png',title:'Rejoignez les familles de votre quartier.',body:'Créez ou rejoignez des sorties. Relevez des défis entre équipes. Collectionnez des badges.',cta:true}
+  {image:'map',mapSvg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 280" style="width:100%;height:100%;display:block">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2b211b" flood-opacity="0.18"/>
+    </filter>
+    <filter id="cardshadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#2b211b" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Fond herbe -->
+  <rect width="390" height="280" fill="#c8ddb0"/>
+
+  <!-- Zones de forêt denses -->
+  <ellipse cx="60" cy="60" rx="70" ry="55" fill="#7aab5e" opacity=".85"/>
+  <ellipse cx="310" cy="45" rx="90" ry="60" fill="#7aab5e" opacity=".85"/>
+  <ellipse cx="340" cy="220" rx="65" ry="50" fill="#7aab5e" opacity=".8"/>
+  <ellipse cx="30" cy="210" rx="50" ry="45" fill="#7aab5e" opacity=".75"/>
+
+  <!-- Arbres forêt gauche -->
+  <circle cx="30" cy="55" r="14" fill="#4a7c3f"/>
+  <circle cx="55" cy="38" r="17" fill="#4a7c3f"/>
+  <circle cx="80" cy="50" r="13" fill="#5a8c4f"/>
+  <circle cx="48" cy="70" r="12" fill="#4a7c3f"/>
+  <circle cx="72" cy="75" r="10" fill="#5a8c4f"/>
+  <circle cx="20" cy="75" r="11" fill="#3a6c2f"/>
+  <circle cx="100" cy="42" r="11" fill="#4a7c3f"/>
+
+  <!-- Arbres forêt droite -->
+  <circle cx="275" cy="38" r="16" fill="#4a7c3f"/>
+  <circle cx="305" cy="25" r="18" fill="#3a6c2f"/>
+  <circle cx="335" cy="35" r="14" fill="#4a7c3f"/>
+  <circle cx="360" cy="50" r="16" fill="#5a8c4f"/>
+  <circle cx="295" cy="60" r="12" fill="#4a7c3f"/>
+  <circle cx="350" cy="65" r="13" fill="#3a6c2f"/>
+  <circle cx="375" cy="38" r="11" fill="#5a8c4f"/>
+
+  <!-- Arbres forêt bas droite -->
+  <circle cx="320" cy="210" r="15" fill="#4a7c3f"/>
+  <circle cx="350" cy="200" r="13" fill="#3a6c2f"/>
+  <circle cx="370" cy="225" r="14" fill="#4a7c3f"/>
+  <circle cx="340" cy="240" r="12" fill="#5a8c4f"/>
+  <circle cx="300" cy="235" r="11" fill="#3a6c2f"/>
+
+  <!-- Arbres forêt bas gauche -->
+  <circle cx="18" cy="200" r="13" fill="#4a7c3f"/>
+  <circle cx="42" cy="215" r="15" fill="#3a6c2f"/>
+  <circle cx="22" cy="235" r="11" fill="#5a8c4f"/>
+  <circle cx="55" cy="240" r="12" fill="#4a7c3f"/>
+
+  <!-- Étang -->
+  <ellipse cx="215" cy="185" rx="62" ry="38" fill="#6aabcc" opacity=".9"/>
+  <ellipse cx="215" cy="185" rx="55" ry="32" fill="#7bbdde" opacity=".7"/>
+  <!-- Reflets eau -->
+  <ellipse cx="200" cy="178" rx="18" ry="5" fill="#fff" opacity=".25" transform="rotate(-15,200,178)"/>
+  <ellipse cx="230" cy="192" rx="12" ry="3" fill="#fff" opacity=".2" transform="rotate(-10,230,192)"/>
+  <!-- Roseaux -->
+  <line x1="158" y1="192" x2="155" y2="170" stroke="#4a6a2a" stroke-width="2"/>
+  <ellipse cx="155" cy="168" rx="4" ry="9" fill="#6a8a3a"/>
+  <line x1="168" y1="196" x2="166" y2="172" stroke="#4a6a2a" stroke-width="2"/>
+  <ellipse cx="166" cy="170" rx="3" ry="8" fill="#7a9a4a"/>
+  <line x1="270" y1="188" x2="273" y2="165" stroke="#4a6a2a" stroke-width="2"/>
+  <ellipse cx="273" cy="163" rx="4" ry="9" fill="#6a8a3a"/>
+
+  <!-- Chemins -->
+  <!-- Chemin principal haut-bas (sable) -->
+  <path d="M 130 0 Q 140 80 150 140 Q 158 180 155 220 Q 152 250 148 280" stroke="#d4b87a" stroke-width="9" fill="none" stroke-linecap="round" opacity=".9"/>
+  <!-- Chemin secondaire gauche-droite -->
+  <path d="M 0 145 Q 50 148 100 145 Q 130 143 158 150 Q 200 158 250 155 Q 300 152 390 148" stroke="#d4b87a" stroke-width="7" fill="none" stroke-linecap="round" opacity=".85"/>
+  <!-- Petit sentier vers étang -->
+  <path d="M 155 175 Q 178 178 195 183" stroke="#c4a86a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+  <!-- Sentier bas -->
+  <path d="M 148 255 Q 190 258 230 255 Q 270 252 300 255" stroke="#c4a86a" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+
+  <!-- Tirets sur chemins pour texture -->
+  <path d="M 133 20 Q 141 90 151 145" stroke="#c4a86a" stroke-width="2" fill="none" stroke-dasharray="6,8" opacity=".5"/>
+  <path d="M 10 145 Q 60 148 110 145 Q 140 143 160 149" stroke="#c4a86a" stroke-width="2" fill="none" stroke-dasharray="6,8" opacity=".5"/>
+
+  <!-- ÉTIQUETTES FAMILLES — cartes chaleureuses -->
+
+  <!-- Étiquette 1 : Famille Amrani — Abri de survie -->
+  <g transform="translate(55,95)" filter="url(#cardshadow)">
+    <rect x="0" y="0" width="130" height="46" rx="10" fill="#f5ede0"/>
+    <rect x="0" y="0" width="130" height="8" rx="10" fill="#356b44"/>
+    <rect x="0" y="5" width="130" height="3" fill="#356b44"/>
+    <text x="8" y="22" font-family="'DM Sans',sans-serif" font-size="11" font-weight="700" fill="#2b211b">Famille Amrani</text>
+    <text x="8" y="34" font-family="'DM Sans',sans-serif" font-size="10" fill="#5c6352">🏕️ Abri de survie</text>
+    <text x="8" y="43" font-family="'DM Sans',sans-serif" font-size="9" fill="#9a8e84">4 enfants · dans 1h</text>
+    <!-- Pin -->
+    <circle cx="123" cy="28" r="7" fill="#356b44"/>
+    <text x="123" y="32" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">📍</text>
+  </g>
+
+  <!-- Étiquette 2 : Famille Martin — Piège à insectes -->
+  <g transform="translate(175,85)" filter="url(#cardshadow)">
+    <rect x="0" y="0" width="132" height="46" rx="10" fill="#f5ede0"/>
+    <rect x="0" y="0" width="132" height="8" rx="10" fill="#b04a18"/>
+    <rect x="0" y="5" width="132" height="3" fill="#b04a18"/>
+    <text x="8" y="22" font-family="'DM Sans',sans-serif" font-size="11" font-weight="700" fill="#2b211b">Famille Martin</text>
+    <text x="8" y="34" font-family="'DM Sans',sans-serif" font-size="10" fill="#5c6352">🪲 Piège à insectes</text>
+    <text x="8" y="43" font-family="'DM Sans',sans-serif" font-size="9" fill="#9a8e84">3 enfants · en cours</text>
+    <circle cx="125" cy="28" r="7" fill="#b04a18"/>
+    <text x="125" y="32" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">📍</text>
+  </g>
+
+  <!-- Étiquette 3 : Famille Diallo — Land art -->
+  <g transform="translate(100,230)" filter="url(#cardshadow)">
+    <rect x="0" y="0" width="125" height="46" rx="10" fill="#f5ede0"/>
+    <rect x="0" y="0" width="125" height="8" rx="10" fill="#356b44"/>
+    <rect x="0" y="5" width="125" height="3" fill="#356b44"/>
+    <text x="8" y="22" font-family="'DM Sans',sans-serif" font-size="11" font-weight="700" fill="#2b211b">Famille Diallo</text>
+    <text x="8" y="34" font-family="'DM Sans',sans-serif" font-size="10" fill="#5c6352">🎨 Land art</text>
+    <text x="8" y="43" font-family="'DM Sans',sans-serif" font-size="9" fill="#9a8e84">2 enfants · demain</text>
+    <circle cx="118" cy="28" r="7" fill="#356b44"/>
+    <text x="118" y="32" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">📍</text>
+  </g>
+
+  <!-- Points de localisation sur les chemins -->
+  <circle cx="142" cy="120" r="5" fill="#356b44" filter="url(#shadow)"/>
+  <circle cx="142" cy="120" r="2.5" fill="#f5ede0"/>
+  <circle cx="200" cy="148" r="5" fill="#b04a18" filter="url(#shadow)"/>
+  <circle cx="200" cy="148" r="2.5" fill="#f5ede0"/>
+  <circle cx="148" cy="252" r="5" fill="#356b44" filter="url(#shadow)"/>
+  <circle cx="148" cy="252" r="2.5" fill="#f5ede0"/>
+
+  <!-- Flèche nord -->
+  <g transform="translate(358,95)">
+    <circle cx="0" cy="0" r="13" fill="rgba(245,237,224,.85)"/>
+    <text x="0" y="-3" font-family="sans-serif" font-size="8" fill="#2b211b" text-anchor="middle" font-weight="700">N</text>
+    <polygon points="0,-11 3,-3 0,-5 -3,-3" fill="#356b44"/>
+    <polygon points="0,11 3,3 0,5 -3,3" fill="#9a8e84"/>
+  </g>
+
+  <!-- Échelle -->
+  <g transform="translate(18,262)">
+    <rect x="0" y="4" width="40" height="3" fill="#2b211b" opacity=".5" rx="1"/>
+    <rect x="0" y="4" width="20" height="3" fill="#2b211b" opacity=".8" rx="1"/>
+    <text x="0" y="14" font-family="'DM Sans',sans-serif" font-size="8" fill="#2b211b" opacity=".6">0    500m</text>
+  </g>
+</svg>`,title:'Rejoignez les familles de votre quartier.',body:'Créez ou rejoignez des sorties. Relevez des défis entre équipes. Collectionnez des badges.',cta:true}
 ];
 let onbStep=0;
 
 function renderOnboarding(){
   const s=ONB_STEPS[onbStep];
   const hero=document.getElementById('onb-hero');
-  hero.style.backgroundImage="url('"+s.image+"')";
-  hero.style.backgroundSize=s.image.includes('carte')?'cover':'80% auto';
-  const bgs=['#f0ead0','#f5ede0','#e8f0e0','#e0eaf5'];
+  hero.style.backgroundImage=s.image.startsWith('<')||s.image==='map'?'none':"url('"+s.image+"')";
+  hero.style.backgroundSize='contain';
+  hero.style.backgroundPosition='center center';
+  const bgs=['#f0ead0','#f5ede0','#e8f0e0','#e8f4ec'];
   hero.style.backgroundColor=bgs[onbStep]||'#f5ede0';
+  // Carte SVG inline pour étape 4
+  const existing=hero.querySelector('svg,img.map-svg');
+  if(existing)existing.remove();
+  if(s.mapSvg){hero.style.backgroundImage='none';hero.insertAdjacentHTML('beforeend',s.mapSvg);}
   document.getElementById('onb-title').textContent=s.title;
   document.getElementById('onb-body').textContent=s.body;
   document.getElementById('onb-dots').innerHTML=ONB_STEPS.map((_,i)=>'<div class="onb-dot'+(i===onbStep?' active':'')+'"></div>').join('');
