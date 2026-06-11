@@ -317,7 +317,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
   <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="home-scroll">
     <div class="home-header">
-      <div><div class="greeting" id="home-greeting">Bonjour</div><div class="sub">De nouveaux projets pour ce weekend !</div></div>
+      <div><div class="greeting" id="home-greeting">Bonjour</div><div class="sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">De nouveaux projets pour ce&nbsp;weekend&nbsp;!</div></div>
       <div style="display:flex;align-items:center;gap:10px">
         <img src="feuille.png" alt="" style="width:32px;opacity:.5;transform:rotate(-15deg)" aria-hidden="true">
         <button class="bell-circle" data-track="notifications" aria-label="Notifications" onclick="document.getElementById('notif-modal').style.display='flex'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></button>
@@ -405,10 +405,10 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <div class="step-counter" id="step-counter" aria-live="polite">Étape 1 sur 4</div>
     <div class="carousel-dots" id="step-dots" style="padding:2px 20px 0;justify-content:flex-start"></div>
     <div style="padding:8px 20px 0"><div style="position:relative"><img id="step-img" src="assets/2-piege_insectes_step1.png" alt="" class="carousel-img" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in"></div></div>
-    <div class="step-card"><div class="step-title" id="step-title"></div><div class="step-text" id="step-text"></div></div>
+    <div class="step-card" style="margin-top:16px"><div class="step-title" id="step-title"></div><div class="step-text" id="step-text"></div></div>
 
     <!-- PHOTO RÉALISATION -->
-    <div style="padding:0 20px 40px">
+    <div id="photo-section" style="padding:0 20px 40px;display:none">
       <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:8px">VOTRE RÉALISATION <img src="feuille.png" alt="" style="width:36px;opacity:.4;transform:rotate(15deg)" aria-hidden="true"></div>
       <p style="font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.5">Prenez votre construction en photo pour la partager et garder un souvenir !</p>
       <div data-track="photo-add" data-dead-end="true" style="width:100%;height:160px;border:2px dashed var(--border);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);cursor:pointer;margin-bottom:14px;background:rgba(255,255,255,.5)">📷 Appuyez pour ajouter une photo</div>
@@ -460,7 +460,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
         <div style="background:#fff;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border)"><img src="assets/Abri_decoration.png" onclick="openLightbox(this.src,this.alt)" style="cursor:zoom-in" alt="Revêtement" style="width:100%;height:180px;object-fit:cover"><div style="padding:14px 16px"><div class="step-title">Revêtir et isoler</div><div class="step-text">Pose les feuilles comme des écailles de poisson, de bas en haut. Rembourre l'intérieur avec de la mousse.</div></div></div>
 
     <!-- PHOTO RÉALISATION -->
-    <div style="padding:0 20px 40px">
+    <div id="photo-section" style="padding:0 20px 40px;display:none">
       <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:8px">VOTRE RÉALISATION <img src="feuille.png" alt="" style="width:36px;opacity:.4;transform:rotate(15deg)" aria-hidden="true"></div>
       <p style="font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.5">Prenez votre construction en photo pour la partager et garder un souvenir !</p>
       <div data-track="photo-add" data-dead-end="true" style="width:100%;height:160px;border:2px dashed var(--border);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);cursor:pointer;margin-bottom:14px;background:rgba(255,255,255,.5)">📷 Appuyez pour ajouter une photo</div>
@@ -643,7 +643,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
   <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="profile-scroll">
     <div class="profile-header">
-      <div class="profile-avatar"><img id="profile-avatar-img" src="avatar_f.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div class="profile-avatar" id="profile-avatar-wrap"><img id="profile-avatar-img" src="" alt="" style="display:none"></div>
       <div class="profile-name" id="profile-name">Eva</div>
       <div class="profile-sub" id="profile-sub">Famille · 2 enfants</div>
       <button class="profile-edit" data-track="edit-profile" data-dead-end="true">Modifier le profil</button>
@@ -986,7 +986,7 @@ function updateUserDisplay(){
   const ps=document.getElementById('profile-sub');
   if(ps)ps.textContent=(nom?'Famille '+nom:p)+' · '+USER_CHILDREN.length+' enfant'+(USER_CHILDREN.length>1?'s':'');
   const av=document.getElementById('profile-avatar-img');
-  if(av)av.src=guessGender(p)==='M'?AVATAR_M:AVATAR_F;
+  if(av){av.src=guessGender(p)==='M'?AVATAR_M:AVATAR_F;av.style.display='block';}
 }
 
 function renderProfileChildren(){
@@ -1048,6 +1048,8 @@ function renderStep(){
   document.getElementById('step-dots').innerHTML=STEPS.map((_,i)=>'<div class="carousel-dot'+(i===currentStep?' active':'')+'"></div>').join('');
   const prev=document.getElementById('step-prev'),next=document.getElementById('step-next');
   prev.style.display=currentStep===0?'none':'flex';
+  const ps=document.getElementById('photo-section');
+  if(ps)ps.style.display=currentStep===STEPS.length-1?'':'none';
   if(currentStep===STEPS.length-1){next.innerHTML='Terminer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>';next.onclick=()=>showExitSurvey();}
   else{next.innerHTML='Suivante <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>';next.onclick=stepNext;}
 }
