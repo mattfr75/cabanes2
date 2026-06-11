@@ -6,7 +6,6 @@
 <title>Cabanes !</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.2.0/tabler-icons.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root {
@@ -230,7 +229,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <div class="onb-dots" id="onb-dots"></div>
   </div>
   <div class="onb-nav" id="onb-nav">
-    <button class="onb-back-btn" id="onb-back" onclick="prevOnb()" aria-label="Étape précédente" style="display:none"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+    <button class="onb-back-btn" id="onb-back" onclick="prevOnb()" aria-label="Étape précédente" style="display:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></button>
     <button class="onb-next-btn" id="onb-next" data-track="onb-next" onclick="nextOnb()">Suivant</button>
   </div>
   <div class="onb-skip"><button data-track="onb-skip" onclick="goTo('register')">Passer l'introduction →</button></div>
@@ -238,7 +237,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
 <!-- REGISTER -->
 <section data-screen="register">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="reg-content">
     <div class="reg-title">Créez votre compte</div>
     <div class="field"><label>Prénom *</label><input type="text" placeholder="Votre prénom" id="reg-prenom" data-track="reg-prenom"></div>
@@ -255,9 +254,9 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
 <!-- RGPD -->
 <section data-screen="rgpd">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="reg-content" style="gap:12px">
-    <button class="back-btn" onclick="goTo('register')"><i class="ti ti-arrow-left"></i> Retour</button>
+    <button class="back-btn" onclick="goTo('register')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Retour</button>
     <div class="reg-title" style="font-size:20px">Protection de vos données</div>
     <div style="font-size:14px;color:var(--text-p);line-height:1.7">
       <p style="margin-bottom:12px"><strong>Responsable du traitement</strong><br>Cabanes ! – Maxence Laroche-Morin &amp; Mathieu Dehgan<br>Contact : contact@cabanes-app.fr</p>
@@ -271,7 +270,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
 <!-- CHILDREN -->
 <section data-screen="children">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="reg-content">
     <div class="reg-title">Qui va jouer dehors ?</div>
     <p style="font-size:15px;color:var(--muted)">Ajoutez vos enfants pour personnaliser les activités proposées.</p>
@@ -295,16 +294,16 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
 <!-- ACCESS -->
 <section data-screen="access">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="reg-content">
     <div class="reg-title" style="font-size:22px">Comment souhaitez-vous utiliser Cabanes ?</div>
     <div class="access-card">
-      <div class="head"><i class="ti ti-sun" style="color:var(--amber)"></i><span class="title">Essai gratuit – 30 jours</span></div>
+      <div class="head"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><span class="title">Essai gratuit – 30 jours</span></div>
       <div class="sub">Découvrez toutes les fonctionnalités pendant 30 jours. Sans carte bancaire.</div>
       <button class="btn-amber-full" data-track="access-trial" onclick="goTo('home')">Commencer mon essai gratuit</button>
     </div>
     <div class="access-card">
-      <div class="head"><i class="ti ti-building-community" style="color:#3d7b88"></i><span class="title">Code commune</span></div>
+      <div class="head"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3d7b88" stroke-width="2"><rect x="2" y="7" width="9" height="14"/><path d="M13 7h9v14H13z"/><path d="M5 21V10"/><path d="M9 21V10"/><path d="M16 21V10"/><path d="M20 21V10"/><path d="M2 7l5-4 6 4"/><path d="M13 3l4 4"/></svg><span class="title">Code commune</span></div>
       <div class="sub">Accès complet offert par votre commune partenaire.</div>
       <div class="field"><input type="text" placeholder="Code d'accès" data-track="access-code"></div>
       <button class="btn-primary" data-track="access-code-submit" onclick="goTo('home')">Valider le code</button>
@@ -315,13 +314,13 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
 <!-- HOME -->
 <section data-screen="home">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="home-scroll">
     <div class="home-header">
       <div><div class="greeting" id="home-greeting">Bonjour</div><div class="sub">De nouveaux projets pour ce weekend !</div></div>
       <div style="display:flex;align-items:center;gap:10px">
         <img src="feuille.png" alt="" style="width:32px;opacity:.5;transform:rotate(-15deg)" aria-hidden="true">
-        <button class="bell-circle" data-track="notifications" aria-label="Notifications" onclick="document.getElementById('notif-modal').style.display='flex'"><i class="ti ti-bell" aria-hidden="true"></i></button>
+        <button class="bell-circle" data-track="notifications" aria-label="Notifications" onclick="document.getElementById('notif-modal').style.display='flex'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></button>
       </div>
     </div>
     <div class="section">
@@ -331,10 +330,10 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
         <div class="fb">
           <div class="fb-left">
             <div class="ftitle">Piège à insectes</div>
-            <div class="fmeta"><span><i class="ti ti-clock"></i> 1h30</span><span><i class="ti ti-users"></i> 6–10 ans</span><span><i class="ti ti-map-pin"></i> Forêt</span></div>
+            <div class="fmeta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1h30</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 6–10 ans</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg> Forêt</span></div>
             <button class="fcta">Voir le projet →</button>
           </div>
-          <button class="bookmark-btn" data-track="bk-piege" onclick="event.stopPropagation();toggleBookmark(this,'Piège à insectes')" aria-label="Sauvegarder"><i class="ti ti-bookmark"></i></button>
+          <button class="bookmark-btn" data-track="bk-piege" onclick="event.stopPropagation();toggleBookmark(this,'Piège à insectes')" aria-label="Sauvegarder"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></button>
         </div>
       </div>
     </div>
@@ -344,7 +343,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
       <div class="cards-grid">
         <div class="small-card" data-track="card-abri" onclick="goTo('detail-abri')" style="cursor:pointer">
           <div class="si" style="background-image:url('assets/AbriSurvie_cover.png');position:relative">
-            <button class="bookmark-btn" style="position:absolute;top:4px;right:4px;background:rgba(255,255,255,.85);border-radius:50%;width:30px;height:30px;font-size:16px;padding:0;min-width:0;min-height:0" data-track="bk-abri" onclick="event.stopPropagation();toggleBookmark(this,'Construire un abri de survie')" aria-label="Sauvegarder"><i class="ti ti-bookmark"></i></button>
+            <button class="bookmark-btn" style="position:absolute;top:4px;right:4px;background:rgba(255,255,255,.85);border-radius:50%;width:30px;height:30px;font-size:16px;padding:0;min-width:0;min-height:0" data-track="bk-abri" onclick="event.stopPropagation();toggleBookmark(this,'Construire un abri de survie')" aria-label="Sauvegarder"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></button>
           </div>
           <div class="sb"><div class="st">Abri de survie</div><div class="sm">2h · 8–14 ans</div></div>
         </div>
@@ -365,11 +364,11 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
   </div>
   <nav class="bottom-nav" id="bottom-nav" aria-label="Navigation principale">
     <div class="bnav-pill">
-      <button class="bnav-tab active" data-tab="home" data-track="nav-home" onclick="goTo('home')" aria-current="page"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-      <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-      <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-      <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-      <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+      <button class="bnav-tab active" data-tab="home" data-track="nav-home" onclick="goTo('home')" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+      <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+      <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+      <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+      <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
     </div>
   </nav>
 </section>
@@ -377,16 +376,16 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 <!-- DETAIL PIÈGE -->
 <section data-screen="detail-piege">
   <div class="detail-scroll">
-    <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
-    <button class="detail-back" data-track="detail-back" onclick="goTo('home')"><i class="ti ti-arrow-left"></i> Retour</button>
+    <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
+    <button class="detail-back" data-track="detail-back" onclick="goTo('home')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Retour</button>
     <div class="detail-hero" style="background-image:url('assets/1-piege_insectes_cover.png')"><div class="badge">Forêt / Jardin</div></div>
     <div class="detail-info">
       <div class="dtitle">Piège à insectes</div>
       <div class="meta-row">
-        <div class="meta-item"><i class="ti ti-clock"></i> 1h30</div>
-        <div class="meta-item"><i class="ti ti-users"></i> 6–10 ans</div>
-        <div class="meta-item"><i class="ti ti-map-pin"></i> Forêt / Jardin</div>
-        <div class="meta-item"><i class="ti ti-users-group"></i> 2 à 6</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1h30</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 6–10 ans</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg> Forêt / Jardin</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 2 à 6</div>
       </div>
       <div class="detail-desc">Construis un piège Barber pour capturer, observer et relâcher les insectes du sol. Une façon concrète de découvrir la biodiversité qui vit juste sous nos pieds.</div>
     </div>
@@ -408,32 +407,32 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <div style="padding:8px 20px 0"><div style="position:relative"><img id="step-img" src="assets/2-piege_insectes_step1.png" alt="" class="carousel-img"></div></div>
     <div class="step-card"><div class="step-title" id="step-title"></div><div class="step-text" id="step-text"></div></div>
     <div class="step-nav">
-      <button class="step-prev-btn" id="step-prev" onclick="stepPrev()" aria-label="Étape précédente" style="display:none"><i class="ti ti-arrow-left"></i> Précédente</button>
-      <button class="step-next-btn" id="step-next" onclick="stepNext()" aria-label="Étape suivante">Suivante <i class="ti ti-arrow-right"></i></button>
+      <button class="step-prev-btn" id="step-prev" onclick="stepPrev()" aria-label="Étape précédente" style="display:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Précédente</button>
+      <button class="step-next-btn" id="step-next" onclick="stepNext()" aria-label="Étape suivante">Suivante <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
     </div>
   </div>
   <nav class="bottom-nav" aria-label="Navigation principale"><div class="bnav-pill">
-    <button class="bnav-tab active" data-tab="home" data-track="nav-home" onclick="goTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    <button class="bnav-tab active" data-tab="home" data-track="nav-home" onclick="goTo('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
   </div></nav>
 </section>
 
 <!-- DETAIL ABRI -->
 <section data-screen="detail-abri">
   <div class="detail-scroll">
-    <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
-    <button class="detail-back" data-track="abri-back" onclick="goTo('home')"><i class="ti ti-arrow-left"></i> Retour</button>
+    <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
+    <button class="detail-back" data-track="abri-back" onclick="goTo('home')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Retour</button>
     <div class="detail-hero" style="background-image:url('assets/AbriSurvie_cover.png')"><div class="badge">Forêt</div></div>
     <div class="detail-info">
       <div class="dtitle">Abri de survie</div>
       <div class="meta-row">
-        <div class="meta-item"><i class="ti ti-clock"></i> 2h</div>
-        <div class="meta-item"><i class="ti ti-users"></i> 8–14 ans</div>
-        <div class="meta-item"><i class="ti ti-map-pin"></i> Forêt</div>
-        <div class="meta-item"><i class="ti ti-users-group"></i> 2 à 8</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2h</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 8–14 ans</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg> Forêt</div>
+        <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 2 à 8</div>
       </div>
       <div class="detail-desc">Construis un vrai abri de débris en forêt : fartière, chevrons, feuilles superposées comme des écailles. Une construction qui tient au vent et à la pluie.</div>
     </div>
@@ -448,17 +447,17 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     </div>
   </div>
   <nav class="bottom-nav" aria-label="Navigation principale"><div class="bnav-pill">
-    <button class="bnav-tab active" data-tab="home" data-track="nav-home" onclick="goTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    <button class="bnav-tab active" data-tab="home" data-track="nav-home" onclick="goTo('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
   </div></nav>
 </section>
 
 <!-- PROJECTS -->
 <section data-screen="projects">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div style="padding:8px 20px 16px"><div style="font-family:var(--font-h);font-size:22px;color:var(--bark)">Mes projets</div></div>
   <div style="padding:0 20px;margin-bottom:12px">
     <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px">ACTIVITÉS SAUVEGARDÉES</div>
@@ -471,31 +470,31 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <div class="project-card"><div class="thumb">🌿</div><div class="info"><div class="title">Herbier des feuilles</div><div class="date">15 mars 2026</div><div class="kids">Léo</div></div></div>
   </div>
   <nav class="bottom-nav" aria-label="Navigation principale"><div class="bnav-pill">
-    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-    <button class="bnav-tab active" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')" aria-current="page"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+    <button class="bnav-tab active" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
   </div></nav>
 </section>
 
 <!-- GROUPS -->
 <section data-screen="groups">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div style="padding:8px 20px 10px"><div style="font-family:var(--font-h);font-size:22px;color:var(--bark)">Groupes autour de vous</div><div style="font-size:13px;color:var(--muted);margin-top:2px">Rejoignez une sortie près de chez vous</div></div>
   <div id="groups-map" style="flex:1;min-height:0;z-index:1"></div>
   <nav class="bottom-nav" aria-label="Navigation principale"><div class="bnav-pill">
-    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-    <button class="bnav-tab active" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')" aria-current="page"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+    <button class="bnav-tab active" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
   </div></nav>
 </section>
 
 <!-- BARDA -->
 <section data-screen="barda">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div style="padding-bottom:100px;overflow-y:auto">
     <div style="padding:8px 20px 16px"><div style="font-family:var(--font-h);font-size:22px;color:var(--bark)">Le Barda</div><div style="font-size:14px;color:var(--muted);margin-top:2px">Tout l'équipement pour vos aventures</div></div>
 
@@ -601,17 +600,17 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     </div></div>
   </div>
   <nav class="bottom-nav" aria-label="Navigation principale"><div class="bnav-pill">
-    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-    <button class="bnav-tab active" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')" aria-current="page"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+    <button class="bnav-tab active" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+    <button class="bnav-tab" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
   </div></nav>
 </section>
 
 <!-- PROFILE -->
 <section data-screen="profile">
-  <div class="status-bar"><span class="time">9:41</span><span class="icons"><i class="ti ti-wifi" aria-hidden="true"></i><i class="ti ti-battery-2" aria-hidden="true"></i></span></div>
+  <div class="status-bar"><span class="time">9:41</span><span class="icons"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="9" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></span></div>
   <div class="profile-scroll">
     <div class="profile-header">
       <div class="profile-avatar"><img id="profile-avatar-img" src="avatar_f.jpg" alt="" onerror="this.style.display='none'"></div>
@@ -632,16 +631,16 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
       <div class="tribu-card">
         <div class="tribu-header">
           <div><div style="font-family:var(--font-h);font-size:17px;font-weight:700;color:#fff">Les Renards de Meudon</div><div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:2px">5 familles · Forêt de Meudon</div></div>
-          <i class="ti ti-chevron-right" style="font-size:20px;color:rgba(255,255,255,.5)" aria-hidden="true"></i>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
         </div>
         <div class="famille-row"><div class="av av-md av-forest">M</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--bark)">Famille Martin</div><div style="font-size:13px;color:var(--muted)">Lucas, 8 ans · Chloé, 11 ans</div></div><span class="tag-active">Actif</span></div>
         <div class="famille-row"><div class="av av-md av-amber">A</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--bark)">Famille Amrani</div><div style="font-size:13px;color:var(--muted)">Yanis, 7 ans · Lina, 10 ans</div></div><span class="tag-active">Actif</span></div>
         <div class="famille-row"><div class="av av-md av-blue">D</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--bark)">Famille Diallo</div><div style="font-size:13px;color:var(--muted)">Ibrahima, 9 ans</div></div><span class="tag-active">Actif</span></div>
         <div class="famille-row"><div class="av av-md av-purple">B</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--bark)">Famille Benali</div><div style="font-size:13px;color:var(--muted)">Sonia, 12 ans · Rayan, 8 ans</div></div><span class="tag-invite">Invité</span></div>
         <div class="famille-row" style="border-bottom:0"><div class="av av-md av-gold">N</div><div style="flex:1"><div style="font-size:15px;font-weight:600;color:var(--bark)">Famille Ndoye</div><div style="font-size:13px;color:var(--muted)">Fatou, 10 ans · Moussa, 7 ans</div></div><span class="tag-active">Actif</span></div>
-        <div style="padding:10px 18px 14px"><button style="width:100%;min-height:var(--touch);background:none;border:1.5px dashed rgba(53,107,68,.35);border-radius:var(--r-md);color:var(--forest);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px" data-dead-end="true" data-track="invite-famille"><i class="ti ti-plus" aria-hidden="true"></i> Inviter une famille</button></div>
+        <div style="padding:10px 18px 14px"><button style="width:100%;min-height:var(--touch);background:none;border:1.5px dashed rgba(53,107,68,.35);border-radius:var(--r-md);color:var(--forest);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px" data-dead-end="true" data-track="invite-famille"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Inviter une famille</button></div>
       </div>
-      <div style="padding:0 20px 8px"><button style="width:100%;min-height:var(--touch);background:none;border:1.5px solid var(--border);border-radius:var(--r-lg);color:var(--bark);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px" data-dead-end="true" data-track="create-tribu"><i class="ti ti-users-plus" aria-hidden="true"></i> Créer une nouvelle tribu</button></div>
+      <div style="padding:0 20px 8px"><button style="width:100%;min-height:var(--touch);background:none;border:1.5px solid var(--border);border-radius:var(--r-lg);color:var(--bark);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px" data-dead-end="true" data-track="create-tribu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg> Créer une nouvelle tribu</button></div>
     </div>
 
     <!-- MES ENFANTS -->
@@ -672,7 +671,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
     <!-- REVOIR ONBOARDING -->
     <div style="padding:0 20px 12px">
-      <button onclick="restartOnboarding()" data-track="restart-onboarding" style="width:100%;min-height:var(--touch);background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);color:var(--forest);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px"><i class="ti ti-refresh" aria-hidden="true"></i> Revoir la présentation</button>
+      <button onclick="restartOnboarding()" data-track="restart-onboarding" style="width:100%;min-height:var(--touch);background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);color:var(--forest);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg> Revoir la présentation</button>
     </div>
 
     <!-- FEEDBACK -->
@@ -681,11 +680,11 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     </div>
   </div>
   <nav class="bottom-nav" aria-label="Navigation principale"><div class="bnav-pill">
-    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
-    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><i class="ti ti-folder" aria-hidden="true"></i>Projets</button>
-    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><i class="ti ti-map-pin" aria-hidden="true"></i>Groupes</button>
-    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><i class="ti ti-backpack" aria-hidden="true"></i>Barda</button>
-    <button class="bnav-tab active" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')" aria-current="page"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+    <button class="bnav-tab" data-tab="home" data-track="nav-home" onclick="goTo('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Accueil</button>
+    <button class="bnav-tab" data-tab="projects" data-track="nav-projects" onclick="goTo('projects')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projets</button>
+    <button class="bnav-tab" data-tab="groups" data-track="nav-groups" onclick="goTo('groups')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>Groupes</button>
+    <button class="bnav-tab" data-tab="barda" data-track="nav-barda" onclick="goTo('barda')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a4 4 0 014-4h8a4 4 0 014 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2v-9z"/><path d="M9 6V5a3 3 0 016 0v1"/><line x1="9" y1="14" x2="15" y2="14"/></svg>Barda</button>
+    <button class="bnav-tab active" data-tab="profile" data-track="nav-profile" onclick="goTo('profile')" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
   </div></nav>
 </section>
 
@@ -716,7 +715,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 </div><!-- /frame -->
 
 <!-- ANALYTICS FAB -->
-<button id="analytics-fab" aria-label="Analytics" onclick="goTo('analytics')"><i class="ti ti-chart-bar" aria-hidden="true"></i></button>
+<button id="analytics-fab" aria-label="Analytics" onclick="goTo('analytics')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="8" width="4" height="12"/><rect x="17" y="4" width="4" height="16"/></svg></button>
 
 <!-- NOTIFICATIONS MODAL -->
 <div id="notif-modal" class="notif-overlay" role="dialog" aria-label="Notifications" onclick="if(event.target===this)this.style.display='none'">
@@ -974,8 +973,8 @@ function renderProfileBadges(){
 /* BOOKMARKS */
 function toggleBookmark(btn,name){
   const i=BOOKMARKS.indexOf(name);
-  if(i>-1){BOOKMARKS.splice(i,1);btn.classList.remove('active');btn.innerHTML='<i class="ti ti-bookmark"></i>';}
-  else{BOOKMARKS.push(name);btn.classList.add('active');btn.innerHTML='<i class="ti ti-bookmark-filled"></i>';}
+  if(i>-1){BOOKMARKS.splice(i,1);btn.classList.remove('active');btn.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>';}
+  else{BOOKMARKS.push(name);btn.classList.add('active');btn.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>';}
   renderBookmarks();
 }
 function renderBookmarks(){
@@ -1000,8 +999,8 @@ function renderStep(){
   document.getElementById('step-dots').innerHTML=STEPS.map((_,i)=>'<div class="carousel-dot'+(i===currentStep?' active':'')+'"></div>').join('');
   const prev=document.getElementById('step-prev'),next=document.getElementById('step-next');
   prev.style.display=currentStep===0?'none':'flex';
-  if(currentStep===STEPS.length-1){next.innerHTML='Terminer <i class="ti ti-check"></i>';next.onclick=()=>showExitSurvey();}
-  else{next.innerHTML='Suivante <i class="ti ti-arrow-right"></i>';next.onclick=stepNext;}
+  if(currentStep===STEPS.length-1){next.innerHTML='Terminer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>';next.onclick=()=>showExitSurvey();}
+  else{next.innerHTML='Suivante <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>';next.onclick=stepNext;}
 }
 function stepNext(){if(currentStep<STEPS.length-1){currentStep++;renderStep();}}
 function stepPrev(){if(currentStep>0){currentStep--;renderStep();}}
