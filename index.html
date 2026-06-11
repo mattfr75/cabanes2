@@ -857,8 +857,6 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const AVATAR_F="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 72 72%27%3E%3Ccircle cx=%2736%27 cy=%2736%27 r=%2736%27 fill=%27%23ede3d1%27/%3E%3Ccircle cx=%2736%27 cy=%2728%27 r=%2713%27 fill=%27%23b08968%27/%3E%3Cellipse cx=%2736%27 cy=%2762%27 rx=%2720%27 ry=%2716%27 fill=%27%23b08968%27/%3E%3C/svg%3E";
-const AVATAR_M="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 72 72%27%3E%3Ccircle cx=%2736%27 cy=%2736%27 r=%2736%27 fill=%27%23ede3d1%27/%3E%3Ccircle cx=%2736%27 cy=%2728%27 r=%2713%27 fill=%27%232b211b%27/%3E%3Cellipse cx=%2736%27 cy=%2762%27 rx=%2720%27 ry=%2716%27 fill=%27%232b211b%27/%3E%3C/svg%3E";
 /* CONFIG */
 const SUPABASE_URL  = 'https://jtciknnukjnevyuhudqe.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Y2lrbm51a2puZXZ5dWh1ZHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5ODM1NjMsImV4cCI6MjA5MzU1OTU2M30.mEX5ZgTUUN0jCaMhhWTBwjISszAvO3YJBdSdHq8FPQk';
@@ -913,7 +911,10 @@ function goTo(name){
     if(app)app.scrollTop=0;
     document.querySelectorAll('.bottom-nav').forEach(n=>n.style.display=NAV_SCREENS.has(name)||name.startsWith('detail')?'':'none');
     const fab=document.getElementById('analytics-fab');
-    if(fab){const isAdmin=ADMIN_EMAILS.includes((TESTER_EMAIL||'').toLowerCase());fab.style.display=(isAdmin&&NAV_SCREENS.has(name))?'flex':'none';}
+    if(fab){
+      const isAdmin=ADMIN_EMAILS.includes((TESTER_EMAIL||'').toLowerCase());
+      fab.style.display=(isAdmin&&SESSION_ID&&NAV_SCREENS.has(name))?'flex':'none';
+    }
     document.querySelectorAll('.bnav-tab').forEach(b=>{
       b.classList.toggle('active',b.dataset.tab===name||(name.startsWith('detail')&&b.dataset.tab==='home'));
     });
@@ -1141,7 +1142,7 @@ function updateUserDisplay(){
   const ps=document.getElementById('profile-sub');
   if(ps)ps.textContent=(nom?'Famille '+nom:p)+' · '+USER_CHILDREN.length+' enfant'+(USER_CHILDREN.length>1?'s':'');
   const av=document.getElementById('profile-avatar-img');
-  if(av){av.src=guessGender(p)==='M'?AVATAR_M:AVATAR_F;av.style.display='block';}
+  if(av){av.src=guessGender(p)==='M'?'assets/avatar_m.jpg':'assets/avatar_f.png';av.style.display='block';}
 }
 
 function renderProfileChildren(){
@@ -1453,7 +1454,7 @@ async function saveSession(){
   // Montrer le FAB analytics si admin
   const fab=document.getElementById('analytics-fab');
   const isAdmin=ADMIN_EMAILS.includes(email.toLowerCase());
-  if(isAdmin&&NAV_SCREENS.has(_currentScreen||''))fab.style.display='flex';
+  if(isAdmin&&SESSION_ID&&NAV_SCREENS.has(_currentScreen||''))fab.style.display='flex';
 }
 
 /* BOOT */
