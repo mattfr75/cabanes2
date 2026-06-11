@@ -212,7 +212,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 <body>
 <div class="frame" id="app" role="main">
 <!-- SPLASH -->
-<section data-screen="splash" class="active">
+<section data-screen="splash" class="active" onclick="goTo('onboarding')" style="cursor:pointer">
   <div class="splash-container">
     <img class="splash-logo-img" src="logo.png" alt="Cabanes !">
     <div class="splash-tagline">Des activités nature en famille</div>
@@ -894,6 +894,8 @@ function renderOnboarding(){
   const hero=document.getElementById('onb-hero');
   hero.style.backgroundImage="url('"+s.image+"')";
   hero.style.backgroundSize=s.image.includes('carte')?'cover':'80% auto';
+  const bgs=['#f0ead0','#f5ede0','#e8f0e0','#e0eaf5'];
+  hero.style.backgroundColor=bgs[onbStep]||'#f5ede0';
   document.getElementById('onb-title').textContent=s.title;
   document.getElementById('onb-body').textContent=s.body;
   document.getElementById('onb-dots').innerHTML=ONB_STEPS.map((_,i)=>'<div class="onb-dot'+(i===onbStep?' active':'')+'"></div>').join('');
@@ -1248,7 +1250,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 
   goTo('splash');
   // Transition automatique vers l'onboarding après 2s
-  setTimeout(()=>goTo('onboarding'),2000);
+  setTimeout(()=>goTo('onboarding'),1500);
 });
 </script>
 </body>
