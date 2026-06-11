@@ -669,9 +669,10 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
       <div class="project-card"><div class="thumb">🌿</div><div class="info"><div class="title">Herbier des feuilles</div><div class="date">15 mars 2026</div><div class="kids">Léo</div></div></div>
     </div>
 
-    <!-- REVOIR ONBOARDING -->
-    <div style="padding:0 20px 12px">
+    <!-- REVOIR ONBOARDING + IDENTIFIER SESSION -->
+    <div style="padding:0 20px 12px;display:flex;flex-direction:column;gap:10px">
       <button onclick="restartOnboarding()" data-track="restart-onboarding" style="width:100%;min-height:var(--touch);background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);color:var(--forest);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg> Revoir la présentation</button>
+      <button onclick="showSessionModal()" data-track="open-session-modal" style="width:100%;min-height:var(--touch);background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);color:var(--text-s);font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px">🎯 Identifier ma session de test</button>
     </div>
 
     <!-- FEEDBACK -->
@@ -798,6 +799,18 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     </div>
     <button id="exit-submit" style="width:100%;height:48px;background:#000;color:#fff;border:0;border-radius:3px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font-b)">Envoyer mes retours →</button>
     <button onclick="document.getElementById('exit-survey').style.display='none'" style="width:100%;background:none;border:0;font-size:13px;color:#888;cursor:pointer;font-family:var(--font-b);padding:10px 0;margin-top:4px">Passer</button>
+  </div>
+</div>
+
+<!-- SESSION ID MODAL -->
+<div id="session-modal" style="display:none;position:fixed;inset:0;background:rgba(43,33,27,.6);align-items:center;justify-content:center;z-index:1000;padding:20px">
+  <div style="background:var(--linen);padding:20px;border-radius:var(--r-lg);max-width:320px;width:100%">
+    <h2 style="font-family:var(--font-h);font-size:18px;color:var(--bark);margin-bottom:6px">Identifier ma session</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5">Renseignez votre nom et email pour retrouver vos données dans l'analytics.</p>
+    <div style="margin-bottom:10px"><label style="font-size:12px;font-weight:500;color:var(--muted);display:block;margin-bottom:4px">Prénom</label><input type="text" id="sm-name" placeholder="Marie" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--border);border-radius:var(--r-md);font-size:15px;font-family:inherit;background:#fff"></div>
+    <div style="margin-bottom:16px"><label style="font-size:12px;font-weight:500;color:var(--muted);display:block;margin-bottom:4px">Email</label><input type="email" id="sm-email" placeholder="votre@email.com" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--border);border-radius:var(--r-md);font-size:15px;font-family:inherit;background:#fff"></div>
+    <button onclick="saveSession()" style="width:100%;height:48px;background:var(--forest);border:0;border-radius:var(--r-lg);color:var(--linen);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Enregistrer</button>
+    <button onclick="document.getElementById('session-modal').style.display='none'" style="width:100%;background:none;border:0;font-size:13px;color:var(--muted);cursor:pointer;padding:10px 0;font-family:inherit;margin-top:4px">Annuler</button>
   </div>
 </div>
 
@@ -1190,17 +1203,52 @@ function openLightbox(src,alt){
 function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
+/* SESSION MODAL */
+function showSessionModal(){
+  const wm=document.getElementById('session-modal');
+  wm.style.display='flex';
+  document.getElementById('sm-name').value=localStorage.getItem('v2_tester_name')||'';
+  document.getElementById('sm-email').value=localStorage.getItem('v2_tester_email')||'';
+}
+async function saveSession(){
+  const name=document.getElementById('sm-name').value.trim();
+  const email=document.getElementById('sm-email').value.trim();
+  if(!name&&!email)return;
+  TESTER_EMAIL=email;
+  localStorage.setItem('v2_tester_name',name);
+  localStorage.setItem('v2_tester_email',email);
+  // Mettre à jour la session en cours si elle existe
+  if(SESSION_ID&&sb){
+    await sb.from('v2_sessions').update({tester_name:name+' ('+email+')'}).eq('id',SESSION_ID);
+  } else {
+    await startSession({tester_name:name+(email?' ('+email+')':''),profile:'manual'});
+  }
+  document.getElementById('session-modal').style.display='none';
+  // Montrer le FAB analytics si admin
+  const fab=document.getElementById('analytics-fab');
+  const isAdmin=ADMIN_EMAILS.includes(email.toLowerCase());
+  if(isAdmin&&NAV_SCREENS.has(_currentScreen||''))fab.style.display='flex';
+}
+
 /* BOOT */
 window.addEventListener('DOMContentLoaded',()=>{
   renderOnboarding();
   renderStep();
   renderBookmarks();
-  document.getElementById('welcome-modal').style.display='none';
+
+  // Welcome modal masquée — accessible depuis profil via bouton dédié
+  const wm=document.getElementById('welcome-modal');
+  wm.hidden=true; wm.style.display='none';
+
+  // Session démarrée en arrière-plan, non-bloquante
+  const storedEmail=localStorage.getItem('v2_tester_email')||'';
+  const storedName=localStorage.getItem('v2_tester_name')||'Anonyme';
+  TESTER_EMAIL=storedEmail;
+  startSession({tester_name:storedName+(storedEmail?' ('+storedEmail+')':''),profile:'auto'});
+
   goTo('splash');
-  setTimeout(()=>{
-    document.getElementById('welcome-modal').hidden=false;
-    document.getElementById('welcome-modal').style.display='flex';
-  },2500);
+  // Transition automatique vers l'onboarding après 2s
+  setTimeout(()=>goTo('onboarding'),2000);
 });
 </script>
 </body>
