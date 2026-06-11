@@ -212,7 +212,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 <body>
 <div class="frame" id="app" role="main">
 <!-- SPLASH -->
-<section data-screen="splash" class="active" onclick="goTo('onboarding')" style="cursor:pointer">
+<section data-screen="splash" onclick="goTo('onboarding')" style="cursor:pointer">
   <div class="splash-container">
     <img class="splash-logo-img" src="logo.png" alt="Cabanes !">
     <div class="splash-tagline">Des activités nature en famille</div>
@@ -859,25 +859,27 @@ document.addEventListener('click',(e)=>{
 });
 
 function goTo(name){
-  if(_currentScreen&&SESSION_ID&&sb){
-    const s=Math.round((Date.now()-_screenStart)/1000);
-    if(s>0)sb.from('v2_screen_times').insert({session_id:SESSION_ID,screen:_currentScreen,seconds:s}).then();
-  }
-  document.querySelectorAll('[data-screen]').forEach(s=>s.classList.toggle('active',s.dataset.screen===name));
-  _currentScreen=name; _screenStart=Date.now();
-  const app=document.getElementById('app'); app.scrollTop=0;
-  document.querySelectorAll('.bottom-nav').forEach(n=>n.style.display=NAV_SCREENS.has(name)||name.startsWith('detail')?'':'none');
-  const fab=document.getElementById('analytics-fab');
-  const isAdmin=ADMIN_EMAILS.includes(TESTER_EMAIL.toLowerCase());
-  fab.style.display=(isAdmin&&NAV_SCREENS.has(name))?'flex':'none';
-  document.querySelectorAll('.bnav-tab').forEach(b=>{
-    b.classList.toggle('active',b.dataset.tab===name||(name.startsWith('detail')&&b.dataset.tab==='home'));
-  });
-  if(name==='analytics')_anlEnter();
-  if(name==='groups')setTimeout(initGroupsMap,100);
-  if(name==='home'||name==='profile'){updateUserDisplay();}
-  if(name==='profile'){renderProfileBadges();renderProfileChildren();}
-  if(name==='detail-piege'){currentStep=0;renderStep();}
+  try{
+    if(_currentScreen&&SESSION_ID&&sb){
+      const s=Math.round((Date.now()-_screenStart)/1000);
+      if(s>0)sb.from('v2_screen_times').insert({session_id:SESSION_ID,screen:_currentScreen,seconds:s}).then();
+    }
+    document.querySelectorAll('[data-screen]').forEach(s=>s.classList.toggle('active',s.dataset.screen===name));
+    _currentScreen=name; _screenStart=Date.now();
+    const app=document.getElementById('app');
+    if(app)app.scrollTop=0;
+    document.querySelectorAll('.bottom-nav').forEach(n=>n.style.display=NAV_SCREENS.has(name)||name.startsWith('detail')?'':'none');
+    const fab=document.getElementById('analytics-fab');
+    if(fab){const isAdmin=ADMIN_EMAILS.includes((TESTER_EMAIL||'').toLowerCase());fab.style.display=(isAdmin&&NAV_SCREENS.has(name))?'flex':'none';}
+    document.querySelectorAll('.bnav-tab').forEach(b=>{
+      b.classList.toggle('active',b.dataset.tab===name||(name.startsWith('detail')&&b.dataset.tab==='home'));
+    });
+    if(name==='analytics')_anlEnter();
+    if(name==='groups')setTimeout(initGroupsMap,100);
+    if(name==='home'||name==='profile')updateUserDisplay();
+    if(name==='profile'){renderProfileBadges();renderProfileChildren();}
+    if(name==='detail-piege'){currentStep=0;renderStep();}
+  }catch(e){console.error('goTo error',e);}
 }
 
 /* ONBOARDING */
@@ -1234,23 +1236,27 @@ async function saveSession(){
 
 /* BOOT */
 window.addEventListener('DOMContentLoaded',()=>{
-  renderOnboarding();
-  renderStep();
-  renderBookmarks();
+  // Init UI
+  try{renderOnboarding();}catch(e){}
+  try{renderStep();}catch(e){}
+  try{renderBookmarks();}catch(e){}
 
-  // Welcome modal masquée — accessible depuis profil via bouton dédié
+  // Cacher la modale welcome
   const wm=document.getElementById('welcome-modal');
-  wm.hidden=true; wm.style.display='none';
+  if(wm){wm.hidden=true;wm.style.display='none';}
 
-  // Session démarrée en arrière-plan, non-bloquante
-  const storedEmail=localStorage.getItem('v2_tester_email')||'';
+  // Session en arrière-plan — ne bloque jamais
+  TESTER_EMAIL=localStorage.getItem('v2_tester_email')||'';
   const storedName=localStorage.getItem('v2_tester_name')||'Anonyme';
-  TESTER_EMAIL=storedEmail;
-  startSession({tester_name:storedName+(storedEmail?' ('+storedEmail+')':''),profile:'auto'});
+  setTimeout(()=>startSession({tester_name:storedName,profile:'auto'}),100);
 
+  // Afficher splash
   goTo('splash');
-  // Transition automatique vers l'onboarding après 2s
-  setTimeout(()=>goTo('onboarding'),1500);
+
+  // Passer à l'onboarding après 1.5s — ou immédiatement au tap (onclick sur splash)
+  setTimeout(()=>{
+    if(_currentScreen==='splash')goTo('onboarding');
+  },1500);
 });
 </script>
 </body>
