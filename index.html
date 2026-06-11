@@ -319,7 +319,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <div class="home-header">
       <div><div class="greeting" id="home-greeting">Bonjour</div><div class="sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">De nouveaux projets pour ce&nbsp;weekend&nbsp;!</div></div>
       <div style="display:flex;align-items:center;gap:10px">
-        <img src="feuille.png" alt="" style="width:32px;opacity:.5;transform:rotate(-15deg)" aria-hidden="true">
+        <img src="assets/feuille.png" alt="" style="width:32px;opacity:.5;transform:rotate(-15deg)" aria-hidden="true">
         <button class="bell-circle" data-track="notifications" aria-label="Notifications" onclick="document.getElementById('notif-modal').style.display='flex'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></button>
       </div>
     </div>
@@ -409,7 +409,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
     <!-- PHOTO RÉALISATION -->
     <div id="photo-section" style="padding:0 20px 40px;display:none">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:8px">VOTRE RÉALISATION <img src="feuille.png" alt="" style="width:36px;opacity:.4;transform:rotate(15deg)" aria-hidden="true"></div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:8px">VOTRE RÉALISATION <img src="assets/feuille.png" alt="" style="width:36px;opacity:.4;transform:rotate(15deg)" aria-hidden="true"></div>
       <p style="font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.5">Prenez votre construction en photo pour la partager et garder un souvenir !</p>
       <div data-track="photo-add" data-dead-end="true" style="width:100%;height:160px;border:2px dashed var(--border);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);cursor:pointer;margin-bottom:14px;background:rgba(255,255,255,.5)">📷 Appuyez pour ajouter une photo</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
@@ -461,7 +461,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
 
     <!-- PHOTO RÉALISATION -->
     <div id="photo-section" style="padding:0 20px 40px;display:none">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:8px">VOTRE RÉALISATION <img src="feuille.png" alt="" style="width:36px;opacity:.4;transform:rotate(15deg)" aria-hidden="true"></div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bark);margin-bottom:10px;display:flex;align-items:center;gap:8px">VOTRE RÉALISATION <img src="assets/feuille.png" alt="" style="width:36px;opacity:.4;transform:rotate(15deg)" aria-hidden="true"></div>
       <p style="font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.5">Prenez votre construction en photo pour la partager et garder un souvenir !</p>
       <div data-track="photo-add" data-dead-end="true" style="width:100%;height:160px;border:2px dashed var(--border);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);cursor:pointer;margin-bottom:14px;background:rgba(255,255,255,.5)">📷 Appuyez pour ajouter une photo</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
@@ -647,7 +647,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
       <div class="profile-name" id="profile-name">Eva</div>
       <div class="profile-sub" id="profile-sub">Famille · 2 enfants</div>
       <button class="profile-edit" data-track="edit-profile" data-dead-end="true">Modifier le profil</button>
-      <div style="margin-top:8px;text-align:center;opacity:.4"><img src="renard.png" alt="" style="width:100px" aria-hidden="true"></div>
+      <div style="margin-top:8px;text-align:center;opacity:.4"><img src="assets/renard.png" alt="" style="width:100px" aria-hidden="true"></div>
     </div>
     <div class="profile-stats">
       <div class="stat"><div class="num">12</div><div class="label">projets</div></div>
@@ -687,7 +687,7 @@ button:focus-visible{outline:3px solid var(--forest);outline-offset:2px;border-r
     <!-- BADGES -->
     <div class="section">
       <div class="section-hdr"><span class="stitle">BADGES DES ENFANTS</span><button class="saction" data-track="badges-all" data-dead-end="true">Voir tout →</button></div>
-      <div style="text-align:center;margin:4px 0 8px;opacity:.4"><img src="champignon_v2.png" alt="" style="width:80px" aria-hidden="true"></div>
+      <div style="text-align:center;margin:4px 0 8px;opacity:.4"><img src="assets/champignon_v2.png" alt="" style="width:80px" aria-hidden="true"></div>
       <div id="profile-badges" style="padding:0 20px"></div>
     </div>
 
@@ -859,7 +859,14 @@ const AVATAR_M="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27
 const SUPABASE_URL  = 'https://jtciknnukjnevyuhudqe.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Y2lrbm51a2puZXZ5dWh1ZHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5ODM1NjMsImV4cCI6MjA5MzU1OTU2M30.mEX5ZgTUUN0jCaMhhWTBwjISszAvO3YJBdSdHq8FPQk';
 const ADMIN_EMAILS  = ['mdehgan@gmail.com','maxence.laroche.morin@gmail.com'];
-let sb; try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON); } catch(e) { sb=null; }
+let sb;
+try {
+  sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON, {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    realtime: { enabled: false },
+    global: { fetch: (...args) => fetch(...args) }
+  });
+} catch(e) { sb=null; }
 let TESTER_EMAIL = localStorage.getItem('v2_tester_email') || '';
 let SESSION_ID   = localStorage.getItem('v2_session_id')   || null;
 let USER_PRENOM = '', USER_NOM = '';
@@ -916,10 +923,10 @@ function goTo(name){
 
 /* ONBOARDING */
 const ONB_STEPS=[
-  {image:'feuille.png',title:'Les weekends, on fait quoi ?',body:"Les enfants s'ennuient, les parents culpabilisent. La nature est là, mais inutilisée."},
-  {image:'renard.png',title:'Chaque weekend, un projet nature pour votre famille.',body:'Des activités ludiques, préparées, détaillées et éducatives. Zéro logistique pour vous.'},
-  {image:'coquelicot.png',title:'Choisissez, sortez et fabriquez !',body:"1. Vous choisissez une activité selon votre localisation et l'âge de vos enfants\n2. Vous suivez les étapes illustrées, avec la liste du matériel\n3. Vous explorez, en famille ou avec d'autres familles du quartier"},
-  {image:'carte_onb.png',title:'Rejoignez les familles de votre quartier.',body:'Créez ou rejoignez des sorties. Relevez des défis entre équipes. Collectionnez des badges.',cta:true}
+  {image:'assets/feuille.png',title:'Les weekends, on fait quoi ?',body:"Les enfants s'ennuient, les parents culpabilisent. La nature est là, mais inutilisée."},
+  {image:'assets/renard.png',title:'Chaque weekend, un projet nature pour votre famille.',body:'Des activités ludiques, préparées, détaillées et éducatives. Zéro logistique pour vous.'},
+  {image:'assets/coquelicot.png',title:'Choisissez, sortez et fabriquez !',body:"1. Vous choisissez une activité selon votre localisation et l'âge de vos enfants\n2. Vous suivez les étapes illustrées, avec la liste du matériel\n3. Vous explorez, en famille ou avec d'autres familles du quartier"},
+  {image:'assets/carte_onb.png',title:'Rejoignez les familles de votre quartier.',body:'Créez ou rejoignez des sorties. Relevez des défis entre équipes. Collectionnez des badges.',cta:true}
 ];
 let onbStep=0;
 
