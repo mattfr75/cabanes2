@@ -1072,7 +1072,8 @@ document.getElementById('w-start').addEventListener('click',async()=>{
   if(!name||!email)return;
   TESTER_EMAIL=email;localStorage.setItem('v2_tester_email',email);
   await startSession({tester_name:name+' ('+email+')',profile});
-  document.getElementById('welcome-modal').hidden=true;
+  const wm=document.getElementById('welcome-modal');
+  wm.hidden=true;wm.style.display='none';
   onbStep=0;renderOnboarding();goTo('onboarding');
 });
 
